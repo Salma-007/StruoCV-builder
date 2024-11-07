@@ -27,9 +27,9 @@ Les sections incluent :
 
 ## Installation
 
-Clonez le repository à l'aide de la commande suivante :
+1. Clonez le repository à l'aide de la commande suivante :
    ```bash
-git clone https://github.com/Salma-007/brief-5-StruoCV.git
+   git clone https://github.com/Salma-007/brief-5-StruoCV.git
 
 ## Usage
 
