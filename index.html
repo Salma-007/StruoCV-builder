@@ -24,24 +24,56 @@
             </section>
         </div>
         <div class="content-cv bg-cyan-100 h-[100vh] w-[80%]">
-            <div class="w-[70%] border-2 h-[70%] m-20">
+            <div class="w-[70%] m-[50px]">
                 <form action="">
-                    <div class="form-group">
-                        <input type="file" id="fichier" name="fichier" /><br>
-                        
-                        <label for="exampleInputEmail1">Nom</label>
-                        <input type="text" class="form-control w-[40%]" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <div class="section-cv bg-white p-6 rounded-lg shadow-md">
+                        <div class="bg-slate-300 p-4 rounded-t-lg mb-6">
+                            <h3 class="text-lg font-medium text-gray-800">Informations personnelles</h3>
+                        </div>
+                    
+                        <div class="space-y-6">
+
+                            <div class="flex space-x-4">
+                                <div class="form-element flex flex-col w-full">
+                                    <label for="nom" class="text-sm font-medium text-gray-700">Nom:</label>
+                                    <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre nom...">
+                                </div>
+                                <div class="form-element flex flex-col w-full">
+                                    <label for="prenom" class="text-sm font-medium text-gray-700">Prénom:</label>
+                                    <input type="text" id="prenom" name="prenom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre prénom...">
+                                </div>
+                            </div>
+                    
+                            <div class="flex space-x-4">
+                                <div class="form-element flex flex-col w-full">
+                                    <label for="photo" class="text-sm font-medium text-gray-700">Photo:</label>
+                                    <input type="file" id="photo" name="fichier" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div class="form-element flex flex-col w-full">
+                                    <label for="adresse" class="text-sm font-medium text-gray-700">Adresse:</label>
+                                    <input type="text" id="adresse" name="adresse" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre adresse...">
+                                </div>
+                            </div>
+                    
+                            <div class="flex space-x-4">
+                                <div class="form-element flex flex-col w-full">
+                                    <label for="telephone" class="text-sm font-medium text-gray-700">Téléphone:</label>
+                                    <input type="text" id="telephone" name="telephone" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre téléphone...">
+                                </div>
+                                <div class="form-element flex flex-col w-full">
+                                    <label for="email" class="text-sm font-medium text-gray-700">Email:</label>
+                                    <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre email...">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Prenom</label>
-                        <input type="text" class="form-control w-[40%]" id="exampleInputPassword1" placeholder="Password">
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+                    
+                    <div class="section-cv"></div>
+                    <div class="section-cv"></div>
+                    <div class="section-cv"></div>
+                    <div class="section-cv"></div>
                 </form>
+            </div>
         </div>
     </main> 
 
