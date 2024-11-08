@@ -7,6 +7,11 @@ let boutonSuivant5 = document.querySelector(".bouton5");
 let boutonSuivant6 = document.querySelector(".bouton6");
 let boutonSuivant7 = document.querySelector(".bouton7");
 let boutonSuivant8 = document.querySelector(".bouton8");
+let boutonPlus = document.querySelector(".boutonPlus")
+let buttonPlusSoft = document.querySelector(".buttonPlusSoft")
+let boutonSubmit = document.querySelector(".boutonSubmit")
+
+
 
 // queryselector de chaque section
 let section_cv1 = document.querySelector(".section-cv1");
@@ -19,7 +24,7 @@ let section_cv7 = document.querySelector(".section-cv7");
 let section_cv8 = document.querySelector(".section-cv8");
 let section_cv9 = document.querySelector(".section-cv9");
 
-// icons
+
 
 
 
@@ -100,3 +105,43 @@ if (boutonSuivant7) {
 if (boutonSuivant8) {
     boutonSuivant8.addEventListener("click", nextSection9);
 }
+
+// boutonPlus.addEventListener("click",()=> {
+//     let divCompetence = document.querySelector(".InputCompetence")
+//     divCompetence.innerHTML=''
+    
+//     let competence = document.createElement('div')
+//     competence.innerHTML= `
+//         <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre compétence...">
+//     `
+//     divCompetence.appendChild(competence)
+// });
+boutonPlus.addEventListener('click', function() {
+    let divCompetence = document.querySelector(".form-element1");
+        let competence = document.createElement('div');
+        competence.classList.add('form-element', 'flex', 'flex-col', 'w-full');
+        competence.innerHTML = `
+            <label for="nom" class="text-sm font-medium text-gray-700">Compétence:</label>
+            <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre compétence...">
+        `;
+        divCompetence.appendChild(competence);
+
+});
+buttonPlusSoft.addEventListener('click', function() {
+    let divCompetence = document.querySelector(".form-element2");
+        let competence = document.createElement('div');
+        competence.classList.add('form-element', 'flex', 'flex-col', 'w-full');
+        competence.innerHTML = `
+            <label for="nom" class="text-sm font-medium text-gray-700">Compétence:</label>
+            <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre soft skill...">
+        `;
+        divCompetence.appendChild(competence);
+
+});
+
+boutonSubmit.addEventListener("click", (e)=>{
+    e.preventDefault();
+    let nom0 = document.querySelector("#nom0")
+    console.log(nom0.value);
+    
+})
