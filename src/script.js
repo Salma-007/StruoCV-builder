@@ -82,7 +82,33 @@ function nextSection9() {
 
 // onclick de chaque bouton
 if (boutonSuivant1) {
-    boutonSuivant1.addEventListener("click", nextSection2);
+    boutonSuivant1.addEventListener("click",()=>{
+
+         
+         const nom = document.getElementById('nom0').value;
+         const prenom = document.getElementById('prenom').value;
+         const photo = document.getElementById('photo').files.length;
+         const adresse = document.getElementById('adresse').value;
+         const telephone = document.getElementById('telephone').value;
+         const email = document.getElementById('email').value;
+         const linkedin = document.getElementById('lien').value;
+         const github = document.getElementById('lien').value;
+ 
+         
+         if (!nom || !prenom || !photo || !adresse || !telephone || !email || !linkedin || !github) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "You didn't enter all the informations!",
+              });
+             
+         }
+         else{
+            nextSection2();
+         }
+         
+         
+        });
 }
 if (boutonSuivant2) {
     boutonSuivant2.addEventListener("click", nextSection3);
