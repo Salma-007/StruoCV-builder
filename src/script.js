@@ -16,6 +16,227 @@ let boutonPlusDiplome = document.querySelector(".boutonPlusDiplome")
 let boutonPlusExperience = document.querySelector(".boutonPlusExperience")
 let boutonPlusCertificat = document.querySelector(".boutonPlusCertificat")
 
+
+// arrays et object du formulaire
+
+let arrCompetence = []
+let arrCompetenceSoft = []
+// let objectLangue = {
+//     langue : langue,
+//     niveau : 
+// }
+
+
+// onclick des sections de progress bar
+let progress_bar = document.querySelector(".progress-bar")
+let progress_item1 = document.querySelector(".progress-item1")
+let progress_item2 = document.querySelector(".progress-item2") 
+let progress_item3 = document.querySelector(".progress-item3") 
+let progress_item4 = document.querySelector(".progress-item4") 
+let progress_item5 = document.querySelector(".progress-item5") 
+let progress_item6 = document.querySelector(".progress-item6") 
+let progress_item7 = document.querySelector(".progress-item7") 
+let progress_item8 = document.querySelector(".progress-item8") 
+let progress_item9 = document.querySelector(".progress-item9")  
+
+progress_item1.addEventListener("click", ()=>{
+
+    if (section_cv2.style.display === "block") {
+        section_cv2.style.display = "none";
+        section_cv1.style.display = "block";
+    }
+    else if (section_cv3.style.display === "block") {
+        section_cv3.style.display = "none";
+        section_cv1.style.display = "block";
+    }
+    else if (section_cv4.style.display === "block") {
+        section_cv4.style.display = "none";
+        section_cv1.style.display = "block";
+    }
+    else if (section_cv5.style.display === "block") {
+        section_cv5.style.display = "none";
+        section_cv1.style.display = "block";
+    }
+    else if (section_cv6.style.display === "block") {
+        section_cv6.style.display = "none";
+        section_cv1.style.display = "block";
+    }
+    else if (section_cv7.style.display === "block") {
+        section_cv7.style.display = "none";
+        section_cv1.style.display = "block";
+    }
+    else if (section_cv8.style.display === "block") {
+        section_cv8.style.display = "none";
+        section_cv1.style.display = "block";
+    }
+    else if (section_cv9.style.display === "block") {
+        section_cv9.style.display = "none";
+        section_cv1.style.display = "block";
+    }
+
+
+})
+progress_item2.addEventListener("click", ()=>{
+
+
+    if (section_cv3.style.display === "block") {
+        section_cv3.style.display = "none";
+        section_cv2.style.display = "block";
+    }
+    else if (section_cv4.style.display === "block") {
+        section_cv4.style.display = "none";
+        section_cv12style.display = "block";
+    }
+    else if (section_cv5.style.display === "block") {
+        section_cv5.style.display = "none";
+        section_cv2.style.display = "block";
+    }
+    else if (section_cv6.style.display === "block") {
+        section_cv6.style.display = "none";
+        section_cv2.style.display = "block";
+    }
+    else if (section_cv7.style.display === "block") {
+        section_cv7.style.display = "none";
+        section_cv2.style.display = "block";
+    }
+    else if (section_cv8.style.display === "block") {
+        section_cv8.style.display = "none";
+        section_cv2.style.display = "block";
+    }
+    else if (section_cv9.style.display === "block") {
+        section_cv9.style.display = "none";
+        section_cv2.style.display = "block";
+    }
+
+
+})
+progress_item3.addEventListener("click", ()=>{
+
+
+    if (section_cv4.style.display === "block") {
+        section_cv4.style.display = "none";
+        section_cv3.style.display = "block";
+    }
+    else if (section_cv5.style.display === "block") {
+        section_cv5.style.display = "none";
+        section_cv3.style.display = "block";
+    }
+    else if (section_cv6.style.display === "block") {
+        section_cv6.style.display = "none";
+        section_cv3.style.display = "block";
+    }
+    else if (section_cv7.style.display === "block") {
+        section_cv7.style.display = "none";
+        section_cv3.style.display = "block";
+    }
+    else if (section_cv8.style.display === "block") {
+        section_cv8.style.display = "none";
+        section_cv3.style.display = "block";
+    }
+    else if (section_cv9.style.display === "block") {
+        section_cv9.style.display = "none";
+        section_cv3.style.display = "block";
+    }
+
+
+})
+
+progress_item4.addEventListener("click", ()=>{
+
+
+    if (section_cv5.style.display === "block") {
+        section_cv5.style.display = "none";
+        section_cv4.style.display = "block";
+    }
+    else if (section_cv6.style.display === "block") {
+        section_cv6.style.display = "none";
+        section_cv4.style.display = "block";
+    }
+    else if (section_cv7.style.display === "block") {
+        section_cv7.style.display = "none";
+        section_cv4.style.display = "block";
+    }
+    else if (section_cv8.style.display === "block") {
+        section_cv8.style.display = "none";
+        section_cv4.style.display = "block";
+    }
+    else if (section_cv9.style.display === "block") {
+        section_cv9.style.display = "none";
+        section_cv4.style.display = "block";
+    }
+
+
+})
+
+progress_item5.addEventListener("click", ()=>{
+
+
+    if (section_cv6.style.display === "block") {
+        section_cv6.style.display = "none";
+        section_cv5.style.display = "block";
+    }
+    else if (section_cv7.style.display === "block") {
+        section_cv7.style.display = "none";
+        section_cv5.style.display = "block";
+    }
+    else if (section_cv8.style.display === "block") {
+        section_cv8.style.display = "none";
+        section_cv5.style.display = "block";
+    }
+    else if (section_cv9.style.display === "block") {
+        section_cv9.style.display = "none";
+        section_cv5.style.display = "block";
+    }
+
+
+})
+
+progress_item6.addEventListener("click", ()=>{
+
+
+    if (section_cv7.style.display === "block") {
+        section_cv7.style.display = "none";
+        section_cv6.style.display = "block";
+    }
+    else if (section_cv8.style.display === "block") {
+        section_cv8.style.display = "none";
+        section_cv6.style.display = "block";
+    }
+    else if (section_cv9.style.display === "block") {
+        section_cv9.style.display = "none";
+        section_cv6.style.display = "block";
+    }
+
+
+})
+
+progress_item7.addEventListener("click", ()=>{
+
+
+    if (section_cv8.style.display === "block") {
+        section_cv8.style.display = "none";
+        section_cv7.style.display = "block";
+    }
+    else if (section_cv9.style.display === "block") {
+        section_cv9.style.display = "none";
+        section_cv7.style.display = "block";
+    }
+
+
+})
+
+progress_item8.addEventListener("click", ()=>{
+
+
+    if (section_cv9.style.display === "block") {
+        section_cv9.style.display = "none";
+        section_cv8.style.display = "block";
+    }
+
+
+})
+
+
 let competenceForm = document.querySelector(".competence-form ")
 
 // queryselector de chaque section
@@ -323,3 +544,6 @@ function ajouterLangue() {
     
 // })
 
+let objetGlobal = {
+    nom :
+}
