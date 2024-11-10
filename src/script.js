@@ -17,14 +17,23 @@ let boutonPlusExperience = document.querySelector(".boutonPlusExperience")
 let boutonPlusCertificat = document.querySelector(".boutonPlusCertificat")
 
 
-// arrays et object du formulaire
+// arrays et objects et inputs du formulaire
+
+let nom = document.querySelector("#nom0")
+let prenom = document.querySelector("#prenom")
+let photo = document.querySelector("#photo")
+let adresse = document.querySelector("#adresse")
+let telephone = document.querySelector("#telephone")
+let email = document.querySelector("#email")
+let linkedin = document.querySelector("#linkedin")
+let github = document.querySelector("#github")
+let profil = document.querySelector("#profil")
+let resume = document.querySelector("#resume")
 
 let arrCompetence = []
 let arrCompetenceSoft = []
-// let objectLangue = {
-//     langue : langue,
-//     niveau : 
-// }
+// let objectLangue = { }
+
 
 
 // onclick des sections de progress bar
@@ -237,7 +246,8 @@ progress_item8.addEventListener("click", ()=>{
 })
 
 
-let competenceForm = document.querySelector(".competence-form ")
+// let competenceForm = document.querySelector(".competence-form ")
+// let competenceFormSoft = document.querySelector(".competence-soft-form ")
 
 // queryselector de chaque section
 let section_cv1 = document.querySelector(".section-cv1");
@@ -345,7 +355,7 @@ if (boutonSuivant3) {
     boutonSuivant3.addEventListener("click",()=>{ 
         let competenceIputs = document.querySelectorAll(".competence-input")
         competenceIputs.forEach((e)=>{
-        console.log(e.value);
+            arrCompetence.push(e)
         
     })
         nextSection4();
@@ -353,10 +363,23 @@ if (boutonSuivant3) {
     });
 }
 if (boutonSuivant4) {
-    boutonSuivant4.addEventListener("click", nextSection5);
+    boutonSuivant4.addEventListener("click",()=>{
+    //     let competenceIputs1 = document.querySelectorAll(".competence-soft-input")
+    //     competenceIputs1.forEach((e)=>{
+    //         arrCompetenceSoft.push(e)
+        
+    // })
+        nextSection5();
+    });
 }
 if (boutonSuivant5) {
-    boutonSuivant5.addEventListener("click", nextSection6);
+    boutonSuivant5.addEventListener("click", ()=>{
+        let langue_input = document.querySelector(".langue-input")
+        let select_input = document.querySelector(".select-input")
+
+        nextSection6();
+
+    });
 }
 if (boutonSuivant6) {
     boutonSuivant6.addEventListener("click", nextSection7);
@@ -380,13 +403,14 @@ boutonPlus.addEventListener('click', function() {
         divCompetence.appendChild(competence);
 
 });
+
 buttonPlusSoft.addEventListener('click', function() {
     let divCompetence = document.querySelector(".form-element2");
         let competence = document.createElement('div');
         competence.classList.add('form-element', 'flex', 'flex-col', 'w-full');
         competence.innerHTML = `
             <label for="nom" class="text-sm font-medium text-gray-700">Compétence:</label>
-            <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre soft skill...">
+            <input type="text" id="nom" name="nom" class="competence-soft-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre soft skill...">
         `;
         divCompetence.appendChild(competence);
 
@@ -487,8 +511,9 @@ boutonPlusCertificat.addEventListener("click", ()=>{
 
 boutonSubmit.addEventListener("click", (e)=>{
     e.preventDefault();
-    let nom0 = document.querySelector("#nom0")
-    console.log(nom0.value);
+    // let nom0 = document.querySelector("#nom0")
+    // console.log(nom0.value);
+    console.log(objetGlobal.competenceSoft[2].value);
     
 })
 
@@ -545,5 +570,16 @@ function ajouterLangue() {
 // })
 
 let objetGlobal = {
-    nom :
+    nom : nom,
+    prenom : prenom,
+    photo : photo,
+    adresse: adresse,
+    telephone : telephone,
+    email : email,
+    linkedin : linkedin,
+    github : github,
+    profil : profil,
+    resume : resume,
+    competence : arrCompetence,
+    competenceSoft : arrCompetenceSoft
 }

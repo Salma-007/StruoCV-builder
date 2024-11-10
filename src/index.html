@@ -118,11 +118,11 @@
                             <div class="flex space-x-4">
                                 <div class="form-element mt-3 flex flex-col w-full">
                                     <label for="lien" class="text-sm font-medium text-gray-700">Linkedin :</label>
-                                    <input type="url" id="lien" name="lien" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez un lien (ex. https://www.example.com)">
+                                    <input type="url" id="linkedin" name="lien" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez un lien (ex. https://www.example.com)">
                                 </div>
                                 <div class="form-element mt-3 flex flex-col w-full">
                                     <label for="lien" class="text-sm font-medium text-gray-700">github :</label>
-                                    <input type="url" id="lien" name="lien" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez un lien (ex. https://www.example.com)">
+                                    <input type="url" id="github" name="lien" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez un lien (ex. https://www.example.com)">
                                 </div>
                             </div>
                             <button type="button" class="flex justify-self-end w-full md:w-auto px-6 py-3 mt-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-300 bouton1" >
@@ -137,7 +137,7 @@
                         <div class="flex-col ">
                             <div class="form-element flex flex-col w-full">
                                 <label for="nom" class="text-sm font-medium text-gray-700">Profil:</label>
-                                <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre profil...">
+                                <input type="text" id="profil" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre profil...">
                             </div>
                             <div class="form-element flex flex-col w-full mt-6">
                                 <label for="prenom" class="text-sm font-medium text-gray-700">Résumé :</label>
@@ -157,7 +157,7 @@
                             <div class="form-element1 flex flex-col w-full">
                                 <label for="nom" class="text-sm font-medium text-gray-700">Compétence:</label>
                                 <div class="InputCompetence flex items-center space-x-2">
-                                    <input type="text" id="nom" name="nom" class="competence-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre compétence...">
+                                    <input type="text" id="competence" name="nom" class="competence-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre compétence...">
                                     <button type="button" class="boutonPlus px-4 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                                         +
                                     </button>
@@ -174,11 +174,11 @@
                             <div class="bg-slate-300 p-4 rounded-t-lg mb-6">
                                 <h3 class="text-lg font-medium text-gray-800">Compétences transversalles </h3>
                             </div>
-                            <div class="flex flex-col">
+                            <div class="competence-soft-form flex flex-col">
                                 <div class="form-element2 flex flex-col w-full">
                                     <label for="nom" class="text-sm font-medium text-gray-700">Compétence:</label>
                                     <div class="flex items-center space-x-2">
-                                        <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre soft skill...">
+                                        <input type="text" id="competenceSoft" name="nom" class="competence-soft-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre soft skill...">
                                         <button type="button" class="buttonPlusSoft px-4 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                                             +
                                         </button>
@@ -201,12 +201,12 @@
                                             <div class=" flex items-center space-x-2">
                                                 <div class="flex-1 mb-3">
                                                     <label for="nom" class="text-sm font-medium text-gray-700">Langue</label>
-                                                    <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre langue...">
+                                                    <input type="text" id="nom" name="nom" class="langue-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre langue...">
                                                 </div>
 
                                                 <div class="flex-1 mb-3">
                                                     <label for="niveau" class="text-sm font-medium text-gray-700">Niveau</label>
-                                                    <select id="niveau" name="niveau" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                                    <select id="niveau" name="niveau" class="select-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                                         <option value="">Sélectionnez le niveau</option>
                                                         <option value="maternelle">Maternelle</option>
                                                         <option value="intermediaire">Intermédiaire</option>
