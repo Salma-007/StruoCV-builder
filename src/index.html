@@ -14,10 +14,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
 </head>
-<body>
+<body">
 
-    <main class="flex  w-[100%] h-[100vh]">
-        <div class="side-slider bg-cyan-500 w-[20%] p-6 rounded-xl shadow-lg">
+    <main class="flex  w-[100%] min-h-screen">
+        <div class="side-slider bg-cyan-500 w-[20%] min-h-screen p-6 rounded-xl shadow-lg bg-cover">
 
             <section class="flex gap-2 items-center mb-6">
                 <img class="w-[30px] h-[30px]" src="../assets/logo-image.png" alt="Logo">
@@ -382,13 +382,18 @@
                         </div>
                     </div>
                     <div class="cv-bouttons bg-white p-6 rounded-lg shadow-md  mt-10 hidden">
-                        <div class="flex justify-around">
-                            <button type="button" class="px-4 py-3 bg-red-600 h-[45px] mt-[10px] text-white rounded-md" >
+                        <div class=" flex justify-around">
+                            <div class="section-derniere flex flex-col gap-2">
+                                <button type="button" class="justify-self-center px-4 py-3 bg-red-600 h-[45px] mt-[10px] w-[100px] text-white rounded-md" >
                                 cv classic
-                            </button>
-                            <button type="button" class="px-4 py-3 bg-red-600 h-[45px] mt-[10px] text-white rounded-md" >
+                                </button>
+                            </div>
+                            <div class="flex flex-col">
+                                <button type="button" class="px-4 py-3 bg-red-600 h-[45px] mt-[10px] text-white rounded-md" >
                                 cv modèle 2
                             </button>
+                            </div>
+                            
                         </div>
                     </div>
                 </form>

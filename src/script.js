@@ -448,6 +448,107 @@ if(boutonSubmit){
         changeIcon(9)
         section_cv9.style.display = "none";
         let classic = document.querySelector(".cv-bouttons")
+        document.querySelector(".section-derniere").innerHTML += `
+        <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+
+        <!-- Contact Section -->
+        <section class="mb-8">
+            <div class="text-center">
+                <h1 class="text-3xl font-bold text-blue-600">Nom Prénom</h1>
+                <p class="text-xl text-gray-500">${objetGlobal.profil.value}</p>
+                <div class="flex justify-center mt-4 space-x-6">
+                    <a href="mailto:email@example.com" class="text-blue-500">email@example.com</a>
+                    <a href="tel:+1234567890" class="text-blue-500">+123 456 7890</a>
+                    <a href="https://linkedin.com/in/votrenom" class="text-blue-500" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compétences Techniques -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-600">Compétences Techniques</h2>
+            <ul class="list-disc pl-5 mt-4 space-y-2">
+                <li>HTML, CSS, JavaScript</li>
+                <li>React, Node.js</li>
+                <li>Python, Django</li>
+                <li>Base de données SQL (MySQL, PostgreSQL)</li>
+                <li>Git, GitHub</li>
+            </ul>
+        </section>
+
+        <!-- Soft Skills -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-600">Soft Skills</h2>
+            <ul class="list-disc pl-5 mt-4 space-y-2">
+                <li>Communication efficace</li>
+                <li>Travail en équipe</li>
+                <li>Gestion du temps</li>
+                <li>Adaptabilité</li>
+            </ul>
+        </section>
+
+        <!-- Langues -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-600">Langues</h2>
+            <ul class="list-disc pl-5 mt-4 space-y-2">
+                <li>Français - Langue maternelle</li>
+                <li>Anglais - Courant</li>
+                <li>Espagnol - Intermédiaire</li>
+            </ul>
+        </section>
+
+        <!-- Loisirs -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-600">Loisirs</h2>
+            <ul class="list-disc pl-5 mt-4 space-y-2">
+                <li>Voyages</li>
+                <li>Photographie</li>
+                <li>Musique (guitare)</li>
+            </ul>
+        </section>
+
+        <!-- Cursus Universitaire -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-600">Cursus Universitaire</h2>
+            <div class="space-y-4 mt-4">
+                <div>
+                    <p class="font-semibold">2020 - 2023 : Licence Informatique</p>
+                    <p class="text-gray-600">Université XYZ</p>
+                </div>
+                <div>
+                    <p class="font-semibold">2018 - 2020 : BTS SIO</p>
+                    <p class="text-gray-600">Lycée ABC</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expériences Professionnelles -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-blue-600">Expériences Professionnelles</h2>
+            <div class="space-y-4 mt-4">
+                <div>
+                    <p class="font-semibold">2023 - Présent : Développeur Web</p>
+                    <p class="text-gray-600">Entreprise XYZ - Description du poste.</p>
+                </div>
+                <div>
+                    <p class="font-semibold">2021 - 2023 : Stagiaire Développeur</p>
+                    <p class="text-gray-600">Entreprise ABC - Description du stage.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificats -->
+        <section>
+            <h2 class="text-2xl font-semibold text-blue-600">Certificats</h2>
+            <ul class="list-disc pl-5 mt-4 space-y-2">
+                <li>Certificat en Développement Web - Coursera (2022)</li>
+                <li>Certificat Python - Udemy (2023)</li>
+                <li>Certificat en Gestion de Projet - LinkedIn Learning (2023)</li>
+            </ul>
+        </section>
+
+    </div>
+        `
         classic.style.display = "block"
 
 
