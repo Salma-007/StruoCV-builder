@@ -7,6 +7,7 @@ let boutonSuivant5 = document.querySelector(".bouton5");
 let boutonSuivant6 = document.querySelector(".bouton6");
 let boutonSuivant7 = document.querySelector(".bouton7");
 let boutonSuivant8 = document.querySelector(".bouton8");
+
 let boutonPlus = document.querySelector(".boutonPlus")
 let buttonPlusSoft = document.querySelector(".buttonPlusSoft")
 let boutonSubmit = document.querySelector(".boutonSubmit")
@@ -17,7 +18,7 @@ let boutonPlusExperience = document.querySelector(".boutonPlusExperience")
 let boutonPlusCertificat = document.querySelector(".boutonPlusCertificat")
 
 
-// arrays et objects et inputs du formulaire
+// inputs du formulaire
 
 let nom = document.querySelector("#nom0")
 let prenom = document.querySelector("#prenom")
@@ -30,24 +31,15 @@ let github = document.querySelector("#github")
 let profil = document.querySelector("#profil")
 let resume = document.querySelector("#resume")
 
+// arrays du objet du formulaire
+
 let arrCompetence = []
 let arrCompetenceSoft = []
 let arrLoisir = []
 let arrLangue = []
-
-// fonction de quel selection est selectionné
-
-// function selection(select){
-//     if(select == "Maternelle" ){
-//         return "Maternelle";
-//     }
-//     else if(select == "Intermédiaire"){
-//         return "Intermédiaire";
-//     }
-//     else{
-//         return "Avancé";
-//     }
-// }
+let arrDiplome = []
+let arrCertificat = []
+let arrExperience = []
 
 
 // onclick des sections de progress bar
@@ -408,17 +400,58 @@ if (boutonSuivant6) {
     boutonSuivant6.addEventListener("click",()=>{
 
         var inputs = document.querySelectorAll('#nom_loisir');
-        inputs.forEach(function(input) { arrLoisir.push(input.value); });
+        inputs.forEach(function(input) { arrLoisir.push(input.value); console.log((input.value));
+        });
+
 
         nextSection7();
 
     });
 }
 if (boutonSuivant7) {
-    boutonSuivant7.addEventListener("click", nextSection8);
+    boutonSuivant7.addEventListener("click", ()=>{
+        recuperationDiplome();
+
+        for (let i = 0; i < arrDiplome.length; i++) {
+            console.log(arrDiplome[i]);
+                        
+            }
+
+      nextSection8();  
+    });
 }
 if (boutonSuivant8) {
-    boutonSuivant8.addEventListener("click", nextSection9);
+    boutonSuivant8.addEventListener("click",()=>{
+        // recuperationCertificat();
+
+        // for (let i = 0; i < arrCertificat.length; i++) {
+        //     console.log(arrCertificat[i]);
+                        
+        //     }
+        recuperationExperience()
+        for (let i = 0; i < arrExperience.length; i++) {
+            console.log(arrExperience[i]);
+                        
+            }
+
+       nextSection9(); 
+    });
+}
+if(boutonSubmit){
+    boutonSubmit.addEventListener("click",()=>{
+        recuperationCertificat();
+
+        for (let i = 0; i < arrCertificat.length; i++) {
+            console.log(arrCertificat[i]);
+                        
+            }
+        changeIcon(9)
+        section_cv9.style.display = "none";
+        let classic = document.querySelector(".cv-bouttons")
+        classic.style.display = "block"
+
+
+    })
 }
 
 
@@ -457,26 +490,29 @@ boutonPlusDiplome.addEventListener("click", ()=>{
         <div class="flex space-x-4">
             <div class="flex-1">
                 <label for="diplome" class="text-sm font-medium text-gray-700">Nom du Diplôme</label>
-                <input type="text" name="diplome" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du diplôme">
+                <input type="text" name="diplome" class="inputDiplome w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du diplôme">
             </div>
 
             <div class="flex-1">
                 <label for="universite" class="text-sm font-medium text-gray-700">Université</label>
-                <input type="text" name="universite" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom de l'université">
+                <input type="text" name="universite" class="inputUniversite w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom de l'université">
             </div>
         </div>
 
         <div class="flex space-x-4">
             <div class="flex-1">
                 <label for="date_debut" class="text-sm font-medium text-gray-700">Date de début</label>
-                <input type="date" name="date_debut" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="date" name="date_debut" class="inputdateDebut w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
 
             <div class="flex-1">
                 <label for="date_fin" class="text-sm font-medium text-gray-700">Date de fin</label>
-                <input type="date" name="date_fin" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="date" name="date_fin" class="inputdateFin w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
         </div>
+        <button type="button" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
+            -
+        </button>
     `
     divDiplome.appendChild(diplome);
 
@@ -489,14 +525,14 @@ boutonPlusExperience.addEventListener("click",()=>{
     experience.innerHTML=`
          <div class="flex space-x-4">
                                     <div class="flex-1">
-                                        <label for="diplome" class="text-sm font-medium text-gray-700">Nom du Diplôme</label>
-                                        <input type="text" id="diplome" name="diplome" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du diplôme">
+                                        <label for="diplome" class="text-sm font-medium text-gray-700">Nom du Poste</label>
+                                        <input type="text" id="diplome" name="diplome" class="inputExperience w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du diplôme">
                                     </div>
                                     
 
                                     <div class="flex-1">
-                                        <label for="universite" class="text-sm font-medium text-gray-700">Université</label>
-                                        <input type="text" id="universite" name="universite" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom de l'université">
+                                        <label for="universite" class="text-sm font-medium text-gray-700">Entreprise</label>
+                                        <input type="text" id="universite" name="universite" class="inputEntreprise w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom de l'université">
                                     </div>
                                 </div>
                         
@@ -505,13 +541,13 @@ boutonPlusExperience.addEventListener("click",()=>{
 
                                     <div class="flex-1">
                                         <label for="date_debut" class="text-sm font-medium text-gray-700">Date de début</label>
-                                        <input type="date" id="date_debut" name="date_debut" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <input type="date" id="date_debut" name="date_debut" class="inputdateDebutExp w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                     </div>
 
 
                                     <div class="flex-1">
                                         <label for="date_fin" class="text-sm font-medium text-gray-700">Date de fin</label>
-                                        <input type="date" id="date_fin" name="date_fin" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <input type="date" id="date_fin" name="date_fin" class="inputdateFinExp w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                     </div>
                                 </div>
     `
@@ -526,26 +562,29 @@ boutonPlusCertificat.addEventListener("click", ()=>{
     <div class="flex space-x-4">
                                     <div class="flex-1">
                                         <label for="certificat_nom" class="text-sm font-medium text-gray-700">Nom du certificat</label>
-                                        <input type="text" id="certificat_nom" name="certificat_nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du certificat">
+                                        <input type="text" id="certificat_nom" name="certificat_nom" class="inputCertificat w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du certificat">
                                     </div>
 
                                     <div class="flex-1">
                                         <label for="certificat_lieu" class="text-sm font-medium text-gray-700">Lieu d'obtention</label>
-                                        <input type="text" id="certificat_lieu" name="certificat_lieu" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le lieu d'obtention">
+                                        <input type="text" id="certificat_lieu" name="certificat_lieu" class="inputCertificatlieu w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le lieu d'obtention">
                                     </div>
+                                    <button type="button" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
+            -
+        </button>
     `
     divCertificat.appendChild(certificat)
 })
 
 // boutonLangue.addEventListener("click",=>)
 
-boutonSubmit.addEventListener("click", (e)=>{
-    e.preventDefault();
-    // let nom0 = document.querySelector("#nom0")
-    // console.log(nom0.value);
-    console.log(objetGlobal.loisir[2]);
+// boutonSubmit.addEventListener("click", (e)=>{
+//     e.preventDefault();
+//     // let nom0 = document.querySelector("#nom0")
+//     // console.log(nom0.value);
+//     console.log(objetGlobal.loisir[2]);
     
-})
+// })
 
 boutonPlusLoisirs.addEventListener("click", ()=>{
 
@@ -619,7 +658,10 @@ let objetGlobal = {
     competence : arrCompetence,
     competenceSoft : arrCompetenceSoft,
     loisir : arrLoisir,
-    langue : arrLangue
+    langue : arrLangue,
+    diplome : arrDiplome,
+    experience :arrExperience,
+    certificat : arrCertificat
 }
 
 
@@ -633,6 +675,57 @@ function recuperationLangue(){
             niveau : select_langue[i].value
         }
         arrLangue.push(objetLangue)
+    }
+
+}
+
+function recuperationDiplome(){
+    let inputDiplome = document.querySelectorAll(".inputDiplome")
+    let inputUniversite = document.querySelectorAll(".inputUniversite")
+    let inputdateDebut = document.querySelectorAll(".inputdateDebut")
+    let inputdateFin = document.querySelectorAll(".inputdateFin")
+
+    for (let i = 0; i < inputDiplome.length; i++) {
+         objetDiplome = {
+            diplome : inputDiplome[i].value,
+            universite : inputUniversite[i].value,
+            dateDebut : inputdateDebut[i].value,
+            dateFin : inputdateFin[i].value
+        }
+        arrDiplome.push(objetDiplome)
+    }
+
+}
+
+function recuperationExperience(){
+    let inputExperience = document.querySelectorAll(".inputExperience")
+    let inputEntreprise = document.querySelectorAll(".inputEntreprise")
+    let inputdateDebutExp = document.querySelectorAll(".inputdateDebutExp")
+    let inputdateFinExp = document.querySelectorAll(".inputdateFinExp")
+
+    for (let i = 0; i < inputdateFinExp.length; i++) {
+         objetExperience = {
+            experience : inputExperience[i].value,
+            entreprise : inputEntreprise[i].value,
+            dateDebutExp : inputdateDebutExp[i].value,
+            dateFinExp : inputdateFinExp[i].value
+        }
+        arrExperience.push(objetExperience)
+    }
+
+}
+
+function recuperationCertificat(){
+    let inputCertificat = document.querySelectorAll(".inputCertificat")
+    let inputCertificatlieu = document.querySelectorAll(".inputCertificatlieu")
+
+    for (let i = 0; i < inputCertificatlieu.length; i++) {
+         objetCertificat = {
+            certificat : inputCertificat[i].value,
+            lieu : inputCertificatlieu[i].value
+            
+        }
+        arrCertificat.push(objetCertificat)
     }
 
 }
