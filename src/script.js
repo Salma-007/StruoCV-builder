@@ -33,8 +33,21 @@ let resume = document.querySelector("#resume")
 let arrCompetence = []
 let arrCompetenceSoft = []
 let arrLoisir = []
+let arrLangue = []
 
+// fonction de quel selection est selectionné
 
+// function selection(select){
+//     if(select == "Maternelle" ){
+//         return "Maternelle";
+//     }
+//     else if(select == "Intermédiaire"){
+//         return "Intermédiaire";
+//     }
+//     else{
+//         return "Avancé";
+//     }
+// }
 
 
 // onclick des sections de progress bar
@@ -377,10 +390,16 @@ if (boutonSuivant5) {
     boutonSuivant5.addEventListener("click", ()=>{
         // let langue_input = document.querySelector(".langue-input")
         // let select_input = document.querySelector(".select-input")
-        let inputsAndSelects = document.querySelectorAll(".langue-input, .select-input");
+        // let inputsAndSelects = document.querySelectorAll(".langue-input, .select-input");
+    //    console.log(document.querySelector(".salma").value);
+    //    console.log("hello");
+
+        recuperationLangue();
        
-
-
+        for (let i = 0; i < arrLangue.length; i++) {
+        console.log(arrLangue[i].lnague);
+                    
+        }
         nextSection6();
 
     });
@@ -392,6 +411,7 @@ if (boutonSuivant6) {
         inputs.forEach(function(input) { arrLoisir.push(input.value); });
 
         nextSection7();
+
     });
 }
 if (boutonSuivant7) {
@@ -523,7 +543,7 @@ boutonSubmit.addEventListener("click", (e)=>{
     e.preventDefault();
     // let nom0 = document.querySelector("#nom0")
     // console.log(nom0.value);
-    console.log(objetGlobal.loisir[1]);
+    console.log(objetGlobal.loisir[2]);
     
 })
 
@@ -544,29 +564,32 @@ boutonPlusLoisirs.addEventListener("click", ()=>{
 
 function ajouterLangue() {
     
-    let divLangue = document.querySelector(".form-element5");
-    const nouvelleLangue = document.createElement('div');
-    nouvelleLangue.classList.add('form-element','flex', 'items-center', 'space-x-2');
+    // let divLangue = document.querySelector(".form-element5");
+    // const nouvelleLangue = document.createElement('div');
+    // nouvelleLangue.classList.add('form-element','flex', 'items-center', 'space-x-2');
 
    
-    nouvelleLangue.innerHTML = `
-        <div class="flex-1 mb-3">
-            <label for="nom" class="text-sm font-medium text-gray-700">Langue</label>
-            <input type="text" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre langue...">
-        </div>
+    // nouvelleLangue.innerHTML = `
+    //     <div class="flex-1 mb-3">
+    //         <label for="nom" class="text-sm font-medium text-gray-700">Langue</label>
+    //         <input type="text" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre langue...">
+    //     </div>
 
-        <div class="flex-1 mb-3">
-            <label for="niveau" class="text-sm font-medium text-gray-700">Niveau</label>
-            <select name="niveau" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="">Sélectionnez le niveau</option>
-                <option value="maternelle">Maternelle</option>
-                <option value="intermediaire">Intermédiaire</option>
-                <option value="avance">Avancé</option>
-            </select>
-        </div>
-    `;
+    //     <div class="flex-1 mb-3">
+    //         <label for="niveau" class="text-sm font-medium text-gray-700">Niveau</label>
+    //         <select name="niveau" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+    //             <option value="">Sélectionnez le niveau</option>
+    //             <option value="maternelle">Maternelle</option>
+    //             <option value="intermediaire">Intermédiaire</option>
+    //             <option value="avance">Avancé</option>
+    //         </select>
+    //     </div>
+    // `;
 
-    divLangue.appendChild(nouvelleLangue);
+    // divLangue.appendChild(nouvelleLangue);
+    var template = document.getElementById('field-template-langue');
+    var clone = template.content.cloneNode(true);
+    document.getElementById('dynamic-fields-langue').appendChild(clone);
 }
 
 
@@ -595,6 +618,21 @@ let objetGlobal = {
     resume : resume,
     competence : arrCompetence,
     competenceSoft : arrCompetenceSoft,
-    loisir : arrLoisir
-    // langue : 
+    loisir : arrLoisir,
+    langue : arrLangue
+}
+
+
+function recuperationLangue(){
+    let input_langue = document.querySelectorAll(".langueInputs")
+    let select_langue = document.querySelectorAll(".Select-langue")
+
+    for (let i = 0; i < input_langue.length; i++) {
+         objetLangue = {
+            lnague : input_langue[i].value,
+            niveau : select_langue[i].value
+        }
+        arrLangue.push(objetLangue)
+    }
+
 }
