@@ -32,7 +32,8 @@ let resume = document.querySelector("#resume")
 
 let arrCompetence = []
 let arrCompetenceSoft = []
-// let objectLangue = { }
+let arrLoisir = []
+
 
 
 
@@ -364,25 +365,34 @@ if (boutonSuivant3) {
 }
 if (boutonSuivant4) {
     boutonSuivant4.addEventListener("click",()=>{
-    //     let competenceIputs1 = document.querySelectorAll(".competence-soft-input")
-    //     competenceIputs1.forEach((e)=>{
-    //         arrCompetenceSoft.push(e)
+        let competenceIputs1 = document.querySelectorAll(".competence-soft-input")
+        competenceIputs1.forEach((e)=>{
+            arrCompetenceSoft.push(e)
         
-    // })
+    })
         nextSection5();
     });
 }
 if (boutonSuivant5) {
     boutonSuivant5.addEventListener("click", ()=>{
-        let langue_input = document.querySelector(".langue-input")
-        let select_input = document.querySelector(".select-input")
+        // let langue_input = document.querySelector(".langue-input")
+        // let select_input = document.querySelector(".select-input")
+        let inputsAndSelects = document.querySelectorAll(".langue-input, .select-input");
+       
+
 
         nextSection6();
 
     });
 }
 if (boutonSuivant6) {
-    boutonSuivant6.addEventListener("click", nextSection7);
+    boutonSuivant6.addEventListener("click",()=>{
+
+        var inputs = document.querySelectorAll('#nom_loisir');
+        inputs.forEach(function(input) { arrLoisir.push(input.value); });
+
+        nextSection7();
+    });
 }
 if (boutonSuivant7) {
     boutonSuivant7.addEventListener("click", nextSection8);
@@ -513,20 +523,23 @@ boutonSubmit.addEventListener("click", (e)=>{
     e.preventDefault();
     // let nom0 = document.querySelector("#nom0")
     // console.log(nom0.value);
-    console.log(objetGlobal.competenceSoft[2].value);
+    console.log(objetGlobal.loisir[1]);
     
 })
 
 boutonPlusLoisirs.addEventListener("click", ()=>{
 
-    let divLoisir = document.querySelector(".form-element6");
-        let loisir = document.createElement('div');
-        loisir.classList.add('form-element', 'flex', 'flex-col', 'w-full');
-        loisir.innerHTML = `
-            <label for="nom" class="text-sm font-medium text-gray-700">Loisir:</label>
-            <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre loisir...">
-        `;
-        divLoisir.appendChild(loisir);
+    // let divLoisir = document.querySelector(".form-element6");
+    //     let loisir = document.createElement('div');
+    //     loisir.classList.add('form-element', 'flex', 'flex-col', 'w-full');
+    //     loisir.innerHTML = `
+    //         <label for="nom" class="text-sm font-medium text-gray-700">Loisir:</label>
+    //         <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre loisir...">
+    //     `;
+    //     divLoisir.appendChild(loisir);
+    var template = document.getElementById('field-template');
+    var clone = template.content.cloneNode(true);
+    document.getElementById('dynamic-fields').appendChild(clone);
 })
 
 function ajouterLangue() {
@@ -581,5 +594,7 @@ let objetGlobal = {
     profil : profil,
     resume : resume,
     competence : arrCompetence,
-    competenceSoft : arrCompetenceSoft
+    competenceSoft : arrCompetenceSoft,
+    loisir : arrLoisir
+    // langue : 
 }

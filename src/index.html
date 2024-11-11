@@ -236,11 +236,15 @@
                             <div class="form-element6 flex flex-col w-full">
                                 <label for="nom" class="text-sm font-medium text-gray-700">Loisir:</label>
                                 <div class="flex items-center space-x-2">
-                                    <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre loisir...">
-                                    <button type="button" class="boutonPlusLoisirs px-4 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                                    <input type="text" id="nom_loisir" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre loisir...">
+                                </div>
+                                <div id="dynamic-fields"></div>
+                                <div class="flex justify-end">
+                                    <button type="button" class="boutonPlusLoisirs w-[90px] h-20 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                                         +
                                     </button>
                                 </div>
+                                
                             </div>
                             <div>
                                 <button type="button" class="flex justify-self-end w-full md:w-auto px-6 py-3 mt-4 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors duration-300 bouton6">
@@ -379,8 +383,24 @@
             </div>
         </div>
     </main> 
+    <template id="field-template">
+        <div class="lex flex-col w-full">
+            <label for="nom" class="text-sm font-medium text-gray-700">Loisir:</label>
+            <input type="text" id="nom_loisir" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre loisir...">
+        </div>
+    </template>
 
 
    <script src="./script.js"></script> 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
