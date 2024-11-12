@@ -40,6 +40,14 @@ let arrLangue = []
 let arrDiplome = []
 let arrCertificat = []
 let arrExperience = []
+function x(){
+    for (let i = 0; i < arrLangue.length; i++) {
+        console.log(arrLangue[0].niveau);
+        
+        
+        
+    }
+}
 
 
 // onclick des sections de progress bar
@@ -319,37 +327,46 @@ function nextSection9() {
     changeIcon(8)
 }
 
+
+// document.getElementById("prenom11").addEventListener('input', checkFormInputs);
+
+
+
+
+//---------boutton 1  suivant disabled-----
+
+// function checkFormInputs(){
+//      if ( nom.value  &&  prenom.value  && photo.value  && adresse.value  && telephone.value  && email.value && linkedin.value  && github.value ) {
+//             console.log("hhdh");
+            
+            
+//             boutonSuivant1.disabled = false;
+             
+//          }
+
+//          else{
+//             boutonSuivant1.disabled = true;
+//          }
+// }
+
+// nom.addEventListener('input', checkFormInputs);
+// prenom.addEventListener('input', checkFormInputs);
+// photo.addEventListener('input', checkFormInputs);
+// adresse.addEventListener('input', checkFormInputs);
+// telephone.addEventListener('input', checkFormInputs);
+// email.addEventListener('input', checkFormInputs);
+// linkedin.addEventListener('input', checkFormInputs);
+// github.addEventListener('input', checkFormInputs);
+
+
+
+
 // onclick de chaque bouton
 if (boutonSuivant1) {
+
+   
     boutonSuivant1.addEventListener("click",()=>{
-        //  const nom = document.getElementById('nom0').value;
-        //  const prenom = document.getElementById('prenom').value;
-        //  const photo = document.getElementById('photo').files.length;
-        //  const adresse = document.getElementById('adresse').value;
-        //  const telephone = document.getElementById('telephone').value;
-        //  const email = document.getElementById('email').value;
-        //  const linkedin = document.getElementById('lien').value;
-        //  const github = document.getElementById('lien').value;
-        //  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-         
-        //  if (!nom || !prenom || !photo || !adresse || !telephone || !email || !linkedin || !github) {
-        //     Swal.fire({
-        //         icon: "error",
-        //         title: "Oops...",
-        //         text: "You didn't enter all the informations!",
-        //       });
-             
-        //  }
-        //  else if(!emailPattern.test(email)){
-        //     Swal.fire({
-        //         icon: "error",
-        //         title: "Oops...",
-        //         text: "Entrez un email valide!",
-        //       });
-        //  }
-        //  else{
-        //     nextSection2();
-        //  }
+       
         nextSection2();
          
         });
@@ -363,8 +380,6 @@ if (boutonSuivant3) {
         competenceIputs.forEach((e)=>{
             arrCompetence.push(e)
             console.log(e.value);
-            
-        
     })
         nextSection4();
 
@@ -445,13 +460,17 @@ if(boutonSubmit){
         <div id="FormSomary" class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
 
         <!-- Contact Section -->
+        
         <section class="mb-8">
             <div class="text-center">
-                <h1 class="text-3xl font-bold text-blue-600">Nom Prénom</h1>
+            
+                <h1 class="text-3xl font-bold text-[#0c4a6e] ">${objetGlobal.profil.value}</h1>
+                <h3 class="text-xl font-bold text-blue-600">${objetGlobal.nom.value} ${objetGlobal.prenom.value}</h3>
+                <p> ${objetGlobal.resume.value} </p>
                 <img class="w-[50px] h-[40px]" src="${objetGlobal.photo.value}">
                 <div class="flex justify-center mt-4 space-x-6">
-                    <a href="mailto:email@example.com" class="text-blue-500">email@example.com</a>
-                    <a href="tel:+1234567890" class="text-blue-500">+123 456 7890</a>
+                    <a href="mailto:${objetGlobal.email.value}" class="text-blue-500">${objetGlobal.email.value}</a>
+                    <a href="tel:+1234567890" class="text-blue-500">${objetGlobal.telephone.value}</a>
                     <a href="https://linkedin.com/in/votrenom" class="text-blue-500" target="_blank">LinkedIn</a>
                 </div>
             </div>
@@ -737,7 +756,6 @@ function deleteCertificat(button){
 
 // fonction d'ajouter et supprimer element loisir
 boutonPlusLoisirs.addEventListener("click", ()=>{
-
 
     var template = document.getElementById('field-template');
     var clone = template.content.cloneNode(true);
