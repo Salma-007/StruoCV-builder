@@ -420,12 +420,7 @@ if (boutonSuivant7) {
 }
 if (boutonSuivant8) {
     boutonSuivant8.addEventListener("click",()=>{
-        // recuperationCertificat();
-
-        // for (let i = 0; i < arrCertificat.length; i++) {
-        //     console.log(arrCertificat[i]);
-                        
-        //     }
+        
         recuperationExperience()
         for (let i = 0; i < arrExperience.length; i++) {
             console.log(arrExperience[i]);
@@ -617,9 +612,9 @@ boutonLangue.addEventListener("click",()=>{
 boutonPlusDiplome.addEventListener("click", ()=>{
     let divDiplome = document.querySelector(".form-element7")
     let diplome = document.createElement("div")
-    diplome.classList.add('flex','flex-col','space-y-2','mb-4')
+    diplome.classList.add('form-element7','flex','flex-col','space-y-2','mb-4')
     diplome.innerHTML=`
-        <div class="form-element77 flex space-x-4">
+        <div class="flex space-x-4">
             <div class="flex-1">
                 <label for="diplome" class="text-sm font-medium text-gray-700">Nom du Diplôme</label>
                 <input type="text" name="diplome" class="inputDiplome w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du diplôme">
@@ -651,7 +646,7 @@ boutonPlusDiplome.addEventListener("click", ()=>{
 })
 // fonction de supprimer div
 function deleteDiplome(button){
-    let competenceDiv = button.closest('.form-element77');
+    let competenceDiv = button.closest('.form-element7');
     
     if (competenceDiv) {
         competenceDiv.remove();
@@ -662,7 +657,7 @@ function deleteDiplome(button){
 boutonPlusExperience.addEventListener("click",()=>{
     let divExperience = document.querySelector(".form-element8")
     let experience = document.createElement("div")
-    experience.classList.add('flex','flex-col','space-y-2','mb-4')
+    experience.classList.add('form-element8','flex','flex-col','space-y-2','mb-4')
     experience.innerHTML=`
          <div class="flex space-x-4">
                                     <div class="flex-1">
@@ -691,17 +686,27 @@ boutonPlusExperience.addEventListener("click",()=>{
                                         <input type="date" id="date_fin" name="date_fin" class="inputdateFinExp w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                     </div>
                                 </div>
-                                <button type="button" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
+                                <button type="button" onclick="deleteExperience(this)" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
             -
         </button>
     `
     divExperience.appendChild(experience);
 })
 
+// fonction de supprimer div
+function deleteExperience(button){
+    let competenceDiv = button.closest('.form-element8');
+    
+    if (competenceDiv) {
+        competenceDiv.remove();
+    }
+}
+
+
 boutonPlusCertificat.addEventListener("click", ()=>{
     let divCertificat = document.querySelector(".form-element9")
     let certificat = document.createElement('div')
-    certificat.classList.add('flex','flex-col','w-full')
+    certificat.classList.add('form-element9','flex','flex-col','w-full')
     certificat.innerHTML=`
     <div class="flex space-x-4">
                                     <div class="flex-1">
@@ -713,12 +718,21 @@ boutonPlusCertificat.addEventListener("click", ()=>{
                                         <label for="certificat_lieu" class="text-sm font-medium text-gray-700">Lieu d'obtention</label>
                                         <input type="text" id="certificat_lieu" name="certificat_lieu" class="inputCertificatlieu w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le lieu d'obtention">
                                     </div>
-                                    <button type="button" class="px-4 py-3 bg-red-600 h-[50px] mt-[10px] text-white rounded-md" >
+                                    <button type="button" onclick="deleteCertificat(this)" class="px-4 py-3 bg-red-600 h-[50px] mt-[10px] text-white rounded-md" >
             -
         </button>
     `
     divCertificat.appendChild(certificat)
 })
+
+// fonction de supprimer div
+function deleteCertificat(button){
+    let competenceDiv = button.closest('.form-element9');
+    
+    if (competenceDiv) {
+        competenceDiv.remove();
+    }
+}
 
 
 // fonction d'ajouter et supprimer element loisir
