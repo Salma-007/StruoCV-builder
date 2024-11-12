@@ -500,12 +500,18 @@ if(boutonSubmit){
       loisirs.appendChild(comp)
     }
 
-     // affichage des loisirs
-     let certificats= document.querySelector(".certificats")
-     for (let i = 0; i < arrCertificat.length; i++) {
-      var comp = document.createElement('li')
-      comp.innerText=`${arrCertificat[i].certificat} chez : ${arrCertificat[i].lieu} `
-      certificats.appendChild(comp)
+     // affichage des diplomes
+     let diplomes= document.querySelector(".diplomes")
+     for (let i = 0; i < arrDiplome.length; i++) {
+      var comp = document.createElement('p')
+      comp.classList.add('font-semibold')
+      comp.innerText=`${arrDiplome[i].dateDebut.slice(0, 4)} - ${arrDiplome[i].dateFin.slice(0, 4)} : ${arrDiplome[i].diplome} `
+      diplomes.appendChild(comp)
+      var comp = document.createElement('p')
+      comp.classList.add('text-gray-600')
+      comp.innerText=`${arrDiplome[i].universite} `
+      diplomes.appendChild(comp)
+
     }
 
     })
