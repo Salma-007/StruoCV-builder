@@ -17,6 +17,8 @@ let boutonPlusDiplome = document.querySelector(".boutonPlusDiplome")
 let boutonPlusExperience = document.querySelector(".boutonPlusExperience")
 let boutonPlusCertificat = document.querySelector(".boutonPlusCertificat")
 
+let cv_classic = document.querySelector(".cv-classic-div")
+
 
 // inputs du formulaire
 
@@ -449,122 +451,65 @@ if(boutonSubmit){
     boutonSubmit.addEventListener("click",()=>{
         recuperationCertificat();
 
-        for (let i = 0; i < arrCertificat.length; i++) {
-            console.log(arrCertificat[i]);
+        // for (let i = 0; i < arrCertificat.length; i++) {
+        //     console.log(arrCertificat[i]);
                         
-            }
+        //     }
+
         changeIcon(9)
         section_cv9.style.display = "none";
         let classic = document.querySelector(".cv-bouttons")
-        document.querySelector(".section-derniere").innerHTML += `
-        <div id="FormSomary" class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+    
+      classic.style.display = "block";
+      cv_classic.style.display = "block";
 
-        <!-- Contact Section -->
-        
-        <section class="mb-8">
-            <div class="text-center">
-            
-                <h1 class="text-3xl font-bold text-[#0c4a6e] ">${objetGlobal.profil.value}</h1>
-                <h3 class="text-xl font-bold text-blue-600">${objetGlobal.nom.value} ${objetGlobal.prenom.value}</h3>
-                <p> ${objetGlobal.resume.value} </p>
-                <img class="w-[50px] h-[40px]" src="${objetGlobal.photo.value}">
-                <div class="flex justify-center mt-4 space-x-6">
-                    <a href="mailto:${objetGlobal.email.value}" class="text-blue-500">${objetGlobal.email.value}</a>
-                    <a href="tel:+1234567890" class="text-blue-500">${objetGlobal.telephone.value}</a>
-                    <a href="https://linkedin.com/in/votrenom" class="text-blue-500" target="_blank">LinkedIn</a>
-                </div>
-            </div>
-        </section>
+      // affichage des info perso
+      let infoPerso = document.querySelector(".infoPerso")
+      let nom_val = document.createElement("h1")
+      nom_val.innerText = `${objetGlobal.nom.value}`
+      infoPerso.appendChild(nom_val)
 
-        <!-- Compétences Techniques -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-600">Compétences Techniques</h2>
-            <ul class="list-disc pl-5 mt-4 space-y-2">
-                <li>HTML, CSS, JavaScript</li>
-                <li>React, Node.js</li>
-                <li>Python, Django</li>
-                <li>Base de données SQL (MySQL, PostgreSQL)</li>
-                <li>Git, GitHub</li>
-            </ul>
-        </section>
 
-        <!-- Soft Skills -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-600">Soft Skills</h2>
-            <ul class="list-disc pl-5 mt-4 space-y-2">
-                <li>Communication efficace</li>
-                <li>Travail en équipe</li>
-                <li>Gestion du temps</li>
-                <li>Adaptabilité</li>
-            </ul>
-        </section>
+      // affichage des competences technique
+      let competences= document.querySelector(".competences")
+      for (let i = 0; i < arrCompetence.length; i++) {
+        var comp = document.createElement('li')
+        comp.innerText=`${arrCompetence[i].value}`
+        competences.appendChild(comp)
+      }
+      // affichage des soft skills
+      let competencesSoft= document.querySelector(".competences-soft")
+      for (let i = 0; i < arrCompetenceSoft.length; i++) {
+        var comp = document.createElement('li')
+        comp.innerText=`${arrCompetenceSoft[i].value}`
+        competencesSoft.appendChild(comp)
+      }
+      // affichage des langues
+      let langues= document.querySelector(".langues")
+      for (let i = 0; i < arrLangue.length; i++) {
+        var comp = document.createElement('li')
+        comp.innerText=`${arrLangue[i].lnague} : ${arrLangue[i].niveau}`
+        langues.appendChild(comp)
+      }
 
-        <!-- Langues -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-600">Langues</h2>
-            <ul class="list-disc pl-5 mt-4 space-y-2">
-                <li>Français - Langue maternelle</li>
-                <li>Anglais - Courant</li>
-                <li>Espagnol - Intermédiaire</li>
-            </ul>
-        </section>
+      // affichage des loisirs
+     let loisirs= document.querySelector(".loisirs")
+     for (let i = 0; i < arrLoisir.length; i++) {
+      var comp = document.createElement('li')
+      comp.innerText=`${arrLoisir[i]}`
+      loisirs.appendChild(comp)
+    }
 
-        <!-- Loisirs -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-600">Loisirs</h2>
-            <ul class="list-disc pl-5 mt-4 space-y-2">
-                <li>Voyages</li>
-                <li>Photographie</li>
-                <li>Musique (guitare)</li>
-            </ul>
-        </section>
-
-        <!-- Cursus Universitaire -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-600">Cursus Universitaire</h2>
-            <div class="space-y-4 mt-4">
-                <div>
-                    <p class="font-semibold">2020 - 2023 : Licence Informatique</p>
-                    <p class="text-gray-600">Université XYZ</p>
-                </div>
-                <div>
-                    <p class="font-semibold">2018 - 2020 : BTS SIO</p>
-                    <p class="text-gray-600">Lycée ABC</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Expériences Professionnelles -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold text-blue-600">Expériences Professionnelles</h2>
-            <div class="space-y-4 mt-4">
-                <div>
-                    <p class="font-semibold">2023 - Présent : Développeur Web</p>
-                    <p class="text-gray-600">Entreprise XYZ - Description du poste.</p>
-                </div>
-                <div>
-                    <p class="font-semibold">2021 - 2023 : Stagiaire Développeur</p>
-                    <p class="text-gray-600">Entreprise ABC - Description du stage.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Certificats -->
-        <section>
-            <h2 class="text-2xl font-semibold text-blue-600">Certificats</h2>
-            <ul class="list-disc pl-5 mt-4 space-y-2">
-                <li>Certificat en Développement Web - Coursera (2022)</li>
-                <li>Certificat Python - Udemy (2023)</li>
-                <li>Certificat en Gestion de Projet - LinkedIn Learning (2023)</li>
-            </ul>
-        </section>
-
-    </div>
-        `
-        classic.style.display = "block";
-
+     // affichage des loisirs
+     let certificats= document.querySelector(".certificats")
+     for (let i = 0; i < arrCertificat.length; i++) {
+      var comp = document.createElement('li')
+      comp.innerText=`${arrCertificat[i].certificat} chez : ${arrCertificat[i].lieu} `
+      certificats.appendChild(comp)
+    }
 
     })
+    
 }
 
 
@@ -679,33 +624,33 @@ boutonPlusExperience.addEventListener("click",()=>{
     experience.classList.add('form-element8','flex','flex-col','space-y-2','mb-4')
     experience.innerHTML=`
          <div class="flex space-x-4">
-                                    <div class="flex-1">
-                                        <label for="diplome" class="text-sm font-medium text-gray-700">Nom du Poste</label>
-                                        <input type="text" id="diplome" name="diplome" class="inputExperience w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du diplôme">
-                                    </div>
+            <div class="flex-1">
+                <label for="diplome" class="text-sm font-medium text-gray-700">Nom du Poste</label>
+                <input type="text" id="diplome" name="diplome" class="inputExperience w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du diplôme">
+            </div>
                                     
 
-                                    <div class="flex-1">
-                                        <label for="universite" class="text-sm font-medium text-gray-700">Entreprise</label>
-                                        <input type="text" id="universite" name="universite" class="inputEntreprise w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom de l'université">
-                                    </div>
-                                </div>
+            <div class="flex-1">
+                <label for="universite" class="text-sm font-medium text-gray-700">Entreprise</label>
+                <input type="text" id="universite" name="universite" class="inputEntreprise w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom de l'université">
+            </div>
+        </div>
                         
 
-                                <div class="flex space-x-4">
+        <div class="flex space-x-4">
 
-                                    <div class="flex-1">
-                                        <label for="date_debut" class="text-sm font-medium text-gray-700">Date de début</label>
-                                        <input type="date" id="date_debut" name="date_debut" class="inputdateDebutExp w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    </div>
+            <div class="flex-1">
+                <label for="date_debut" class="text-sm font-medium text-gray-700">Date de début</label>
+                <input type="date" id="date_debut" name="date_debut" class="inputdateDebutExp w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
 
 
-                                    <div class="flex-1">
-                                        <label for="date_fin" class="text-sm font-medium text-gray-700">Date de fin</label>
-                                        <input type="date" id="date_fin" name="date_fin" class="inputdateFinExp w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    </div>
-                                </div>
-                                <button type="button" onclick="deleteExperience(this)" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
+            <div class="flex-1">
+                <label for="date_fin" class="text-sm font-medium text-gray-700">Date de fin</label>
+                <input type="date" id="date_fin" name="date_fin" class="inputdateFinExp w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+        <button type="button" onclick="deleteExperience(this)" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
             -
         </button>
     `
@@ -728,16 +673,16 @@ boutonPlusCertificat.addEventListener("click", ()=>{
     certificat.classList.add('form-element9','flex','flex-col','w-full')
     certificat.innerHTML=`
     <div class="flex space-x-4">
-                                    <div class="flex-1">
-                                        <label for="certificat_nom" class="text-sm font-medium text-gray-700">Nom du certificat</label>
-                                        <input type="text" id="certificat_nom" name="certificat_nom" class="inputCertificat w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du certificat">
-                                    </div>
+        <div class="flex-1">
+            <label for="certificat_nom" class="text-sm font-medium text-gray-700">Nom du certificat</label>
+            <input type="text" id="certificat_nom" name="certificat_nom" class="inputCertificat w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du certificat">
+        </div>
 
-                                    <div class="flex-1">
-                                        <label for="certificat_lieu" class="text-sm font-medium text-gray-700">Lieu d'obtention</label>
-                                        <input type="text" id="certificat_lieu" name="certificat_lieu" class="inputCertificatlieu w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le lieu d'obtention">
-                                    </div>
-                                    <button type="button" onclick="deleteCertificat(this)" class="px-4 py-3 bg-red-600 h-[50px] mt-[10px] text-white rounded-md" >
+        <div class="flex-1">
+            <label for="certificat_lieu" class="text-sm font-medium text-gray-700">Lieu d'obtention</label>
+            <input type="text" id="certificat_lieu" name="certificat_lieu" class="inputCertificatlieu w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le lieu d'obtention">
+        </div>
+        <button type="button" onclick="deleteCertificat(this)" class="px-4 py-3 bg-red-600 h-[50px] mt-[10px] text-white rounded-md" >
             -
         </button>
     `
@@ -878,10 +823,10 @@ function recuperationCertificat(){
 }
 
 
-// html to pdf
+// ---------------html to pdf-----------
 let btndwlond = document.querySelector(".btndwlond")
 btndwlond.addEventListener('click', async function () {
-    const content = document.getElementById('FormSomary'); 
+    const content = document.querySelector(".cv-classic-div")
     const filename = 'my-cv.pdf';
 
     const options = {
