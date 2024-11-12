@@ -96,8 +96,8 @@
                     
                             <div class="flex space-x-4">
                                 <div class="form-element flex flex-col w-full">
-                                    <label for="photo" class="text-sm font-medium text-gray-700">Photo:</label>
-                                    <input type="file" id="photo" name="fichier" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <label for="photo" class="text-sm font-medium text-gray-700 " >Photo:</label>
+                                    <input type="file" id="photo" name="fichier" accept="image/*" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                 </div>
                                 <div class="form-element flex flex-col w-full">
                                     <label for="adresse" class="text-sm font-medium text-gray-700">Adresse:</label>
@@ -384,12 +384,12 @@
                     <div class="cv-bouttons bg-white p-6 rounded-lg shadow-md  mt-10 hidden">
                         <div class=" flex justify-around">
                             <div class="section-derniere flex flex-col gap-2">
-                                <button type="button" class="justify-self-center px-4 py-3 bg-red-600 h-[45px] mt-[10px] w-[100px] text-white rounded-md" >
+                                <button type="button" class="btndwlond justify-self-center px-4 py-3 bg-[#312e81] h-[45px] mt-[10px] w-[100px] text-white rounded-md" >
                                 cv classic
                                 </button>
                             </div>
                             <div class="flex flex-col">
-                                <button type="button" class="px-4 py-3 bg-red-600 h-[45px] mt-[10px] text-white rounded-md" >
+                                <button type="button" class=" px-4 py-3 bg-[#831843] h-[45px] mt-[10px] text-white rounded-md" >
                                 cv modèle 2
                             </button>
                             </div>
@@ -401,17 +401,23 @@
         </div>
     </main> 
     <template id="field-template">
-        <div class="flex flex-col w-full">
+        <div class="form-element4 flex flex-col w-full">
             <label for="nom" class="text-sm font-medium text-gray-700">Loisir:</label>
-            <input type="text" id="nom_loisir" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre loisir...">
+            <div class="InputCompetence flex items-center space-x-2">
+                <input type="text" id="nom_loisir" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre loisir...">
+                <button type="button" onclick="deleteLoisir(this)" class="px-4 py-3 bg-red-600 text-white rounded-md" >
+                    -
+                </button>
+            </div>
         </div>
     </template>
 
     <template id="field-template-langue">
-        <div class=" flex items-center space-x-2">
+        <div class="form-element3 flex items-center space-x-2">
         <div class="flex-1 mb-3">
             <label for="nom" class="text-sm font-medium text-gray-700">Langue</label>
             <input type="text" id="nom" name="nom" class="langueInputs langue-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre langue...">
+            
         </div>
 
         <div class="flex-1 mb-3">
@@ -423,7 +429,7 @@
                 <option value="avance">Avancé</option>
             </select>
         </div>
-        <button type="button" class="px-4 py-3 bg-red-600 h-[45px] mt-[10px] text-white rounded-md" >
+        <button type="button" onclick="deleteLangue(this)" class="px-4 py-3 bg-red-600 h-[45px] mt-[10px] text-white rounded-md" >
             -
         </button>
     </div>
@@ -432,6 +438,7 @@
     
 
    <script src="./script.js"></script> 
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 </body>
 </html>
 

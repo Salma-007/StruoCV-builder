@@ -362,6 +362,8 @@ if (boutonSuivant3) {
         let competenceIputs = document.querySelectorAll(".competence-input")
         competenceIputs.forEach((e)=>{
             arrCompetence.push(e)
+            console.log(e.value);
+            
         
     })
         nextSection4();
@@ -373,20 +375,16 @@ if (boutonSuivant4) {
         let competenceIputs1 = document.querySelectorAll(".competence-soft-input")
         competenceIputs1.forEach((e)=>{
             arrCompetenceSoft.push(e)
-        
+            console.log(e.value);
+            
     })
         nextSection5();
     });
 }
 if (boutonSuivant5) {
     boutonSuivant5.addEventListener("click", ()=>{
-        // let langue_input = document.querySelector(".langue-input")
-        // let select_input = document.querySelector(".select-input")
-        // let inputsAndSelects = document.querySelectorAll(".langue-input, .select-input");
-    //    console.log(document.querySelector(".salma").value);
-    //    console.log("hello");
 
-        recuperationLangue();
+                recuperationLangue();
        
         for (let i = 0; i < arrLangue.length; i++) {
         console.log(arrLangue[i].lnague);
@@ -449,13 +447,13 @@ if(boutonSubmit){
         section_cv9.style.display = "none";
         let classic = document.querySelector(".cv-bouttons")
         document.querySelector(".section-derniere").innerHTML += `
-        <div class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+        <div id="FormSomary" class="max-w-4xl mx-auto p-8 bg-white shadow-lg rounded-lg">
 
         <!-- Contact Section -->
         <section class="mb-8">
             <div class="text-center">
                 <h1 class="text-3xl font-bold text-blue-600">Nom Prénom</h1>
-                <p class="text-xl text-gray-500">${objetGlobal.profil.value}</p>
+                <img class="w-[50px] h-[40px]" src="${objetGlobal.photo.value}">
                 <div class="flex justify-center mt-4 space-x-6">
                     <a href="mailto:email@example.com" class="text-blue-500">email@example.com</a>
                     <a href="tel:+1234567890" class="text-blue-500">+123 456 7890</a>
@@ -549,7 +547,7 @@ if(boutonSubmit){
 
     </div>
         `
-        classic.style.display = "block"
+        classic.style.display = "block";
 
 
     })
@@ -559,26 +557,59 @@ if(boutonSubmit){
 boutonPlus.addEventListener('click', function() {
     let divCompetence = document.querySelector(".form-element1");
         let competence = document.createElement('div');
-        competence.classList.add('form-element', 'flex', 'flex-col', 'w-full');
+        competence.classList.add('form-element1', 'flex','flex-col', 'w-full');
         competence.innerHTML = `
+
+           
             <label for="nom" class="text-sm font-medium text-gray-700">Compétence:</label>
-            <input type="text" id="nom" name="nom" class="competence-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre compétence...">
+                <div class="InputCompetence flex items-center space-x-2">
+                <input type="text" id="nom" name="nom" class="competence-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre compétence...">
+                
+                <button type="button" onclick="deleteCompetence(this)" class="px-4 py-3 bg-red-600 text-white rounded-md" >
+                -
+                </button>
+            </div>
+
         `;
         divCompetence.appendChild(competence);
 
 });
+// fonction de supprimer div
+function deleteCompetence(button){
+    let competenceDiv = button.closest('.form-element1');
+    
+    if (competenceDiv) {
+        competenceDiv.remove();
+    }
+}
 
 buttonPlusSoft.addEventListener('click', function() {
     let divCompetence = document.querySelector(".form-element2");
         let competence = document.createElement('div');
-        competence.classList.add('form-element', 'flex', 'flex-col', 'w-full');
+        competence.classList.add('form-element2', 'flex', 'flex-col', 'w-full');
         competence.innerHTML = `
             <label for="nom" class="text-sm font-medium text-gray-700">Compétence:</label>
+            <div class="InputCompetence flex items-center space-x-2">
             <input type="text" id="nom" name="nom" class="competence-soft-input w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre soft skill...">
-        `;
+            <button type="button" onclick="deleteCompetenceSoft(this)" class="px-4 py-3 bg-red-600 text-white rounded-md" >
+                -
+                </button>
+            </div>
+            `;
         divCompetence.appendChild(competence);
 
 });
+
+function deleteCompetenceSoft(button){
+    let competenceDiv = button.closest('.form-element2');
+    
+    if (competenceDiv) {
+        competenceDiv.remove();
+    }
+}
+
+
+
 boutonLangue.addEventListener("click",()=>{
     ajouterLangue();
 })
@@ -588,7 +619,7 @@ boutonPlusDiplome.addEventListener("click", ()=>{
     let diplome = document.createElement("div")
     diplome.classList.add('flex','flex-col','space-y-2','mb-4')
     diplome.innerHTML=`
-        <div class="flex space-x-4">
+        <div class="form-element77 flex space-x-4">
             <div class="flex-1">
                 <label for="diplome" class="text-sm font-medium text-gray-700">Nom du Diplôme</label>
                 <input type="text" name="diplome" class="inputDiplome w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le nom du diplôme">
@@ -611,13 +642,22 @@ boutonPlusDiplome.addEventListener("click", ()=>{
                 <input type="date" name="date_fin" class="inputdateFin w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
         </div>
-        <button type="button" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
+        <button type="button" onclick="deleteDiplome(this)" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
             -
         </button>
     `
     divDiplome.appendChild(diplome);
 
 })
+// fonction de supprimer div
+function deleteDiplome(button){
+    let competenceDiv = button.closest('.form-element77');
+    
+    if (competenceDiv) {
+        competenceDiv.remove();
+    }
+}
+
 
 boutonPlusExperience.addEventListener("click",()=>{
     let divExperience = document.querySelector(".form-element8")
@@ -651,6 +691,9 @@ boutonPlusExperience.addEventListener("click",()=>{
                                         <input type="date" id="date_fin" name="date_fin" class="inputdateFinExp w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
                                     </div>
                                 </div>
+                                <button type="button" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
+            -
+        </button>
     `
     divExperience.appendChild(experience);
 })
@@ -670,80 +713,51 @@ boutonPlusCertificat.addEventListener("click", ()=>{
                                         <label for="certificat_lieu" class="text-sm font-medium text-gray-700">Lieu d'obtention</label>
                                         <input type="text" id="certificat_lieu" name="certificat_lieu" class="inputCertificatlieu w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez le lieu d'obtention">
                                     </div>
-                                    <button type="button" class="px-4 py-3 bg-red-600 h-[45px] w-[50px] mt-[10px] text-white rounded-md" >
+                                    <button type="button" class="px-4 py-3 bg-red-600 h-[50px] mt-[10px] text-white rounded-md" >
             -
         </button>
     `
     divCertificat.appendChild(certificat)
 })
 
-// boutonLangue.addEventListener("click",=>)
 
-// boutonSubmit.addEventListener("click", (e)=>{
-//     e.preventDefault();
-//     // let nom0 = document.querySelector("#nom0")
-//     // console.log(nom0.value);
-//     console.log(objetGlobal.loisir[2]);
-    
-// })
-
+// fonction d'ajouter et supprimer element loisir
 boutonPlusLoisirs.addEventListener("click", ()=>{
 
-    // let divLoisir = document.querySelector(".form-element6");
-    //     let loisir = document.createElement('div');
-    //     loisir.classList.add('form-element', 'flex', 'flex-col', 'w-full');
-    //     loisir.innerHTML = `
-    //         <label for="nom" class="text-sm font-medium text-gray-700">Loisir:</label>
-    //         <input type="text" id="nom" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre loisir...">
-    //     `;
-    //     divLoisir.appendChild(loisir);
+
     var template = document.getElementById('field-template');
     var clone = template.content.cloneNode(true);
     document.getElementById('dynamic-fields').appendChild(clone);
 })
 
+function deleteLoisir(button){
+    let competenceDiv = button.closest('.form-element4');
+    
+    if (competenceDiv) {
+        competenceDiv.remove();
+    }
+}
+
+
+
+// fonction d'ajouter et supprimer element langue
 function ajouterLangue() {
     
-    // let divLangue = document.querySelector(".form-element5");
-    // const nouvelleLangue = document.createElement('div');
-    // nouvelleLangue.classList.add('form-element','flex', 'items-center', 'space-x-2');
 
-   
-    // nouvelleLangue.innerHTML = `
-    //     <div class="flex-1 mb-3">
-    //         <label for="nom" class="text-sm font-medium text-gray-700">Langue</label>
-    //         <input type="text" name="nom" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Entrez votre langue...">
-    //     </div>
-
-    //     <div class="flex-1 mb-3">
-    //         <label for="niveau" class="text-sm font-medium text-gray-700">Niveau</label>
-    //         <select name="niveau" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-    //             <option value="">Sélectionnez le niveau</option>
-    //             <option value="maternelle">Maternelle</option>
-    //             <option value="intermediaire">Intermédiaire</option>
-    //             <option value="avance">Avancé</option>
-    //         </select>
-    //     </div>
-    // `;
-
-    // divLangue.appendChild(nouvelleLangue);
     var template = document.getElementById('field-template-langue');
     var clone = template.content.cloneNode(true);
     document.getElementById('dynamic-fields-langue').appendChild(clone);
 }
 
-
-// let competenceForm = document.querySelector(".competence-form ")
-// let suivant = document.querySelector(".suivant-competence")
-
-// suivant.addEventListener("click", ()=>{
-//     let competenceIputs = document.querySelectorAll(".competence-input")
-//     competenceIputs.forEach((e)=>{
-//         console.log(e.value);
-        
-//     })
+function deleteLangue(button){
+    let competenceDiv = button.closest('.form-element3');
     
-// })
+    if (competenceDiv) {
+        competenceDiv.remove();
+    }
+}
+
+
 
 let objetGlobal = {
     nom : nom,
@@ -830,3 +844,24 @@ function recuperationCertificat(){
     }
 
 }
+
+
+// html to pdf
+let btndwlond = document.querySelector(".btndwlond")
+btndwlond.addEventListener('click', async function () {
+    const content = document.getElementById('FormSomary'); 
+    const filename = 'my-cv.pdf';
+
+    const options = {
+        margin: 1,
+        filename: filename,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    try {
+        await html2pdf().set(options).from(content).save();
+    } catch (error) {
+        console.error('false:', error.message);
+    }
+});
