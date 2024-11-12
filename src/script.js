@@ -484,6 +484,14 @@ if(boutonSubmit){
         comp.innerText=`${arrCompetenceSoft[i].value}`
         competencesSoft.appendChild(comp)
       }
+      // affichage des certificats
+      let certificats= document.querySelector(".certificats")
+      for (let i = 0; i < arrCertificat.length; i++) {
+        var comp = document.createElement('li')
+        comp.innerText=`${arrCertificat[i].certificat} chez : ${arrCertificat[i].lieu}`
+        certificats.appendChild(comp)
+      }
+
       // affichage des langues
       let langues= document.querySelector(".langues")
       for (let i = 0; i < arrLangue.length; i++) {
@@ -491,6 +499,7 @@ if(boutonSubmit){
         comp.innerText=`${arrLangue[i].lnague} : ${arrLangue[i].niveau}`
         langues.appendChild(comp)
       }
+
 
       // affichage des loisirs
      let loisirs= document.querySelector(".loisirs")
@@ -511,7 +520,19 @@ if(boutonSubmit){
       comp.classList.add('text-gray-600')
       comp.innerText=`${arrDiplome[i].universite} `
       diplomes.appendChild(comp)
+    }
 
+     // affichage des experiences
+     let experiences= document.querySelector(".experiences")
+     for (let i = 0; i < arrExperience.length; i++) {
+      var comp = document.createElement('p')
+      comp.classList.add('font-semibold')
+      comp.innerText=`${arrExperience[i].dateDebutExp.slice(0, 4)} - ${arrExperience[i].dateFinExp.slice(0, 4)} : ${arrExperience[i].experience} `
+      diplomes.appendChild(comp)
+      var comp = document.createElement('p')
+      comp.classList.add('text-gray-600')
+      comp.innerText=`${arrExperience[i].entreprise} `
+      experiences.appendChild(comp)
     }
 
     })
