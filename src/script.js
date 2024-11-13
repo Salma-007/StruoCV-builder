@@ -368,7 +368,9 @@ if (boutonSuivant1) {
 
    
     boutonSuivant1.addEventListener("click",()=>{
-       
+
+
+
         nextSection2();
          
         });
@@ -476,22 +478,34 @@ if(boutonSubmit){
         infoNom.innerHTML=`${objetGlobal.nom.value} ${objetGlobal.prenom.value}`
         let InfoProfil = document.querySelector(".InfoProfil")
         InfoProfil.innerHTML= `${objetGlobal.profil.value} `
-        let infoDesc = document.querySelector(".infoDesc")
-        infoDesc.innerHTML=`${objetGlobal.resume.value} `
+        // let infoDesc = document.querySelector(".infoDesc")
+        // infoDesc.innerHTML=`${objetGlobal.resume.value} `
+        let descc = document.createElement('p')
+        descc.classList.add('text-sm','text-gray-500','w-[310px]')
+        descc.innerHTML=`${objetGlobal.resume.value}`
+        infoPerso.appendChild(descc)
 
         // email
         let persoContact= document.querySelector(".persoContact")
         let emailto1 = document.createElement("div")
         emailto1.classList.add( 'justify-center', 'mt-4','space-x-6', 'w-[400px]')
         emailto1.innerHTML=` 
-             <p> ${objetGlobal.adresse.value}</p>
+             <p class="ml-0.5"> ${objetGlobal.adresse.value}</p>
              <a href="mailto:${objetGlobal.email.value}" class="InfoEmail text-blue-500">${objetGlobal.email.value}</a>
              <a href="${objetGlobal.telephone.value}" class="text-blue-500">${objetGlobal.telephone.value}</a>
              <a href="${objetGlobal.linkedin.value}<" class="text-blue-500" target="_blank">Linkedin</a>
              <a href="${objetGlobal.github.value}<" class="text-blue-500" target="_blank">Github</a>
         `
         persoContact.appendChild(emailto1)
-
+        let img = document.querySelector("#photo00").files[0];
+        let imgURL = URL.createObjectURL(img);
+        let InfoPhoto= document.querySelector(".InfoPhoto")
+        let photo0 = document.createElement('div')
+        photo0.classList.add('w-28')
+        photo0.innerHTML=`
+        <img class="w-28 h-28 rounded-full" src="${imgURL}" alt="Photo de profil">
+        `
+        InfoPhoto.appendChild(photo0)
 
 
       // affichage des competences technique
