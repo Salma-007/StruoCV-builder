@@ -400,8 +400,10 @@ if (boutonSuivant4) {
 }
 if (boutonSuivant5) {
     boutonSuivant5.addEventListener("click", ()=>{
-
-                recuperationLangue();
+                if( arrLangue.length == 0 ){
+                    recuperationLangue();
+                }
+                
        
         for (let i = 0; i < arrLangue.length; i++) {
         console.log(arrLangue[i].lnague);
@@ -425,7 +427,10 @@ if (boutonSuivant6) {
 }
 if (boutonSuivant7) {
     boutonSuivant7.addEventListener("click", ()=>{
-        recuperationDiplome();
+        if(arrDiplome.length == 0){
+          recuperationDiplome();  
+        }
+        
 
         for (let i = 0; i < arrDiplome.length; i++) {
             console.log(arrDiplome[i]);
@@ -437,8 +442,10 @@ if (boutonSuivant7) {
 }
 if (boutonSuivant8) {
     boutonSuivant8.addEventListener("click",()=>{
+        if(arrCertificat.length == 0){
+           recuperationExperience() 
+        }
         
-        recuperationExperience()
         for (let i = 0; i < arrExperience.length; i++) {
             console.log(arrExperience[i]);
                         
@@ -449,12 +456,10 @@ if (boutonSuivant8) {
 }
 if(boutonSubmit){
     boutonSubmit.addEventListener("click",()=>{
-        recuperationCertificat();
-
-        // for (let i = 0; i < arrCertificat.length; i++) {
-        //     console.log(arrCertificat[i]);
-                        
-        //     }
+        if(arrCertificat.length == 0){
+            recuperationCertificat();
+        }
+        
 
         changeIcon(9)
         section_cv9.style.display = "none";
@@ -463,11 +468,30 @@ if(boutonSubmit){
       classic.style.display = "block";
       cv_classic.style.display = "block";
 
+      
+
       // affichage des info perso
       let infoPerso = document.querySelector(".infoPerso")
-      let nom_val = document.createElement("h1")
-      nom_val.innerText = `${objetGlobal.nom.value}`
-      infoPerso.appendChild(nom_val)
+        let infoNom = document.querySelector(".infoNom")
+        infoNom.innerHTML=`${objetGlobal.nom.value} ${objetGlobal.prenom.value}`
+        let InfoProfil = document.querySelector(".InfoProfil")
+        InfoProfil.innerHTML= `${objetGlobal.profil.value} `
+        let infoDesc = document.querySelector(".infoDesc")
+        infoDesc.innerHTML=`${objetGlobal.resume.value} `
+
+        // email
+        let persoContact= document.querySelector(".persoContact")
+        let emailto1 = document.createElement("div")
+        emailto1.classList.add( 'justify-center', 'mt-4','space-x-6', 'w-[400px]')
+        emailto1.innerHTML=` 
+             <p> ${objetGlobal.adresse.value}</p>
+             <a href="mailto:${objetGlobal.email.value}" class="InfoEmail text-blue-500">${objetGlobal.email.value}</a>
+             <a href="${objetGlobal.telephone.value}" class="text-blue-500">${objetGlobal.telephone.value}</a>
+             <a href="${objetGlobal.linkedin.value}<" class="text-blue-500" target="_blank">Linkedin</a>
+             <a href="${objetGlobal.github.value}<" class="text-blue-500" target="_blank">Github</a>
+        `
+        persoContact.appendChild(emailto1)
+
 
 
       // affichage des competences technique
@@ -528,7 +552,7 @@ if(boutonSubmit){
       var comp = document.createElement('p')
       comp.classList.add('font-semibold')
       comp.innerText=`${arrExperience[i].dateDebutExp.slice(0, 4)} - ${arrExperience[i].dateFinExp.slice(0, 4)} : ${arrExperience[i].experience} `
-      diplomes.appendChild(comp)
+      experiences.appendChild(comp)
       var comp = document.createElement('p')
       comp.classList.add('text-gray-600')
       comp.innerText=`${arrExperience[i].entreprise} `
