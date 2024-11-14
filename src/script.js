@@ -24,7 +24,7 @@ let cv_classic = document.querySelector(".cv-classic-div")
 
 let nom = document.querySelector("#nom0")
 let prenom = document.querySelector("#prenom")
-let photo = document.querySelector("#photo")
+let photo = document.querySelector("#photo00")
 let adresse = document.querySelector("#adresse")
 let telephone = document.querySelector("#telephone")
 let email = document.querySelector("#email")
@@ -332,33 +332,86 @@ function nextSection9() {
 
 // document.getElementById("prenom11").addEventListener('input', checkFormInputs);
 
-
+ // if (!emailRegex.test(email)) {
+        //     document.getElementById("emailError").innerHTML = "Veuillez entrer un email valide.";
+        //     boutonSuivant1.disabled = false;
+        // }
+              
 
 
 //---------boutton 1  suivant disabled-----
+var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-// function checkFormInputs(){
-//      if ( nom.value  &&  prenom.value  && photo.value  && adresse.value  && telephone.value  && email.value && linkedin.value  && github.value ) {
-//             console.log("hhdh");
-            
-            
-//             boutonSuivant1.disabled = false;
-             
-//          }
+function checkFormInputs() {
 
-//          else{
-//             boutonSuivant1.disabled = true;
-//          }
-// }
+    let isFormValid = true;
 
-// nom.addEventListener('input', checkFormInputs);
-// prenom.addEventListener('input', checkFormInputs);
-// photo.addEventListener('input', checkFormInputs);
-// adresse.addEventListener('input', checkFormInputs);
-// telephone.addEventListener('input', checkFormInputs);
-// email.addEventListener('input', checkFormInputs);
-// linkedin.addEventListener('input', checkFormInputs);
-// github.addEventListener('input', checkFormInputs);
+
+    document.getElementById("nomError").innerHTML = "";
+    document.getElementById("prenomError").innerHTML = "";
+    document.getElementById("emailError0").innerHTML = "";
+
+
+    if (!nom.value) {
+        document.getElementById("nomError").innerHTML = "Veuillez entrer un nom valide.";
+        isFormValid = false;
+    }
+
+    if (!prenom.value) {
+        document.getElementById("prenomError").innerHTML = "Veuillez entrer un prénom valide.";
+        isFormValid = false;
+    }
+
+    if (!photo.value) {
+        document.getElementById("photoError").innerHTML = "Veuillez télécharger une photo.";
+        isFormValid = false;
+    }
+
+    if (!adresse.value) {
+        document.getElementById("adresseError").innerHTML = "Veuillez entrer une adresse.";
+        isFormValid = false;
+    }
+
+    if (!telephone.value) {
+        document.getElementById("telephoneError").innerHTML = "Veuillez entrer un numéro de téléphone.";
+        isFormValid = false;
+    }
+
+    if (!linkedin.value) {
+        document.getElementById("linkedinError").innerHTML = "Veuillez entrer un profil LinkedIn.";
+        isFormValid = false;
+    }
+
+    if (!github.value) {
+        document.getElementById("githubError").innerHTML = "Veuillez entrer un profil GitHub.";
+        isFormValid = false;
+    }
+
+
+    if (!email.value) {
+        document.getElementById("emailError0").innerHTML = "Veuillez entrer un email.";
+        isFormValid = false;
+    } else if (!emailRegex.test(email.value)) {
+        document.getElementById("emailError0").innerHTML = "Veuillez entrer un email valide.";
+        isFormValid = false;
+    }
+
+
+    if (isFormValid) {
+        boutonSuivant1.disabled = false;
+    } else {
+        boutonSuivant1.disabled = true;
+    }
+}
+
+nom.addEventListener('input', checkFormInputs);
+prenom.addEventListener('input', checkFormInputs);
+photo.addEventListener('input', checkFormInputs);
+adresse.addEventListener('input', checkFormInputs);
+telephone.addEventListener('input', checkFormInputs);
+email.addEventListener('input', checkFormInputs);
+linkedin.addEventListener('input', checkFormInputs);
+github.addEventListener('input', checkFormInputs);
 
 
 
@@ -368,8 +421,8 @@ if (boutonSuivant1) {
 
    
     boutonSuivant1.addEventListener("click",()=>{
-
-
+            
+        
 
         nextSection2();
          
@@ -887,19 +940,20 @@ function recuperationCertificat(){
 
 }
 
-
+const content = document.querySelector(".cv-classic-div")
 // ---------------html to pdf-----------
 let btndwlond = document.querySelector(".btndwlond")
 btndwlond.addEventListener('click', async function () {
-    const content = document.querySelector(".cv-classic-div")
+    
+    
     const filename = 'my-cv.pdf';
 
     const options = {
         margin: 1,
         filename: filename,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        html2canvas: { scale: 4 },
+        jsPDF: { unit: 'in', format: 'A4', orientation: 'portrait' }
     };
     try {
         await html2pdf().set(options).from(content).save();
