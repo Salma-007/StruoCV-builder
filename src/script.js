@@ -42,11 +42,7 @@ let arrLangue = []
 let arrDiplome = []
 let arrCertificat = []
 let arrExperience = []
-function x(){
-    for (let i = 0; i < arrLangue.length; i++) {
-        console.log(arrLangue[0].niveau);  
-    }
-}
+
 
 
 // onclick des sections de progress bar
@@ -438,6 +434,7 @@ if (boutonSuivant2) {
     else {
         document.getElementById("resumeError").innerHTML = ""; 
     }
+
     if (isFormValid) {
         nextSection3();
     } else {
@@ -463,7 +460,7 @@ if (boutonSuivant3) {
         });
 
         if (allFilled) {
-            console.log("Tous les champs sont remplis", arrCompetence);
+            
             nextSection4();  
         } else {
             alert("veuillez entrez tout les champs correctement!")
@@ -506,14 +503,9 @@ if (boutonSuivant5) {
                 else{
                     alert("veuillez entrez tout les champs correctement!")
                 }
-                
-       
-        // for (let i = 0; i < arrLangue.length; i++) {
-        // console.log(arrLangue[i].lnague);
-                    
-        // }
-        
-
+        for (let i = 0; i < arrLangue.length; i++) {
+        console.log(arrLangue[i].langue);
+        }
     });
 }
 
@@ -541,8 +533,6 @@ if (boutonSuivant6) {
         else{
             alert("veuillez entrez tout les champs correctement!")
         }
-        
-
     });
 }
 
@@ -578,9 +568,7 @@ if (boutonSuivant8) {
         for (let i = 0; i < arrExperience.length; i++) {
             console.log(arrExperience[i]);
                         
-            }
-
-       
+            }       
     });
 }
 
@@ -956,6 +944,7 @@ let objetGlobal = {
 
 
 function recuperationLangue() {
+    
     let input_langue = document.querySelectorAll(".langueInputs");
     let select_langue = document.querySelectorAll(".Select-langue");
     let allFilled = true; 
@@ -1097,8 +1086,9 @@ function recuperationCertificat(){
     return allFilled;
 }
 
-const content = document.querySelector(".cv-classic-div")
+
 // ---------------html to pdf-----------
+const content = document.querySelector(".cv-classic-div")
 let btndwlond = document.querySelector(".btndwlond")
 btndwlond.addEventListener('click', async function () {
     
