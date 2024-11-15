@@ -419,6 +419,9 @@ function checkFormInputs2() {
     else if (!resume.value) {
         document.getElementById("resumeError").innerHTML = "Veuillez entrer un profil valide.";
         isFormValid = false;
+    } else if (resume.value.length > 60) {
+        document.getElementById("resumeError").innerHTML = "Le résumé ne doit pas dépasser 30 caractères.";
+        isFormValid = false;
     }
     if (isFormValid) {
         boutonSuivant2.disabled = false;
@@ -507,16 +510,16 @@ if (boutonSuivant4) {
 
 if (boutonSuivant5) {
     boutonSuivant5.addEventListener("click", ()=>{
-                if( arrLangue.length == 0 ){
-                    recuperationLangue();
+                if( recuperationLangue()){
+                    nextSection6();
                 }
                 
        
-        for (let i = 0; i < arrLangue.length; i++) {
-        console.log(arrLangue[i].lnague);
+        // for (let i = 0; i < arrLangue.length; i++) {
+        // console.log(arrLangue[i].lnague);
                     
-        }
-        nextSection6();
+        // }
+        
 
     });
 }
@@ -525,19 +528,32 @@ if (boutonSuivant6) {
     boutonSuivant6.addEventListener("click",()=>{
 
         var inputs = document.querySelectorAll('#nom_loisir');
-        inputs.forEach(function(input) { arrLoisir.push(input.value); console.log((input.value));
+        // inputs.forEach(function(input) { arrLoisir.push(input.value); console.log((input.value));
+        // });
+        let allFilled = true;
+        inputs.forEach((input) => {
+            if(input.value.trim() === ""){
+                allFilled = false
+                input.style.borderColor = "red"
+            }
+            else{
+                input.style.borderColor = ""
+                arrLoisir.push(input.value)
+            }
         });
 
-
-        nextSection7();
+        if(allFilled){
+            nextSection7(); 
+        }
+        
 
     });
 }
 
 if (boutonSuivant7) {
     boutonSuivant7.addEventListener("click", ()=>{
-        if(arrDiplome.length == 0){
-          recuperationDiplome();  
+        if(recuperationDiplome()){
+            nextSection8();  
         }
         
 
@@ -546,14 +562,14 @@ if (boutonSuivant7) {
                         
             }
 
-      nextSection8();  
+      
     });
 }
 
 if (boutonSuivant8) {
     boutonSuivant8.addEventListener("click",()=>{
-        if(arrCertificat.length == 0){
-           recuperationExperience() 
+        if(recuperationExperience() ){
+            nextSection9(); 
         }
         
         for (let i = 0; i < arrExperience.length; i++) {
@@ -561,15 +577,15 @@ if (boutonSuivant8) {
                         
             }
 
-       nextSection9(); 
+       
     });
 }
 
 if(boutonSubmit){
     boutonSubmit.addEventListener("click",()=>{
-        if(arrCertificat.length == 0){
-            recuperationCertificat();
-        }
+        if(recuperationCertificat()){
+            
+        
         
 
         changeIcon(9)
@@ -599,7 +615,7 @@ if(boutonSubmit){
         let emailto1 = document.createElement("div")
         emailto1.classList.add( 'justify-center', 'mt-4','space-x-6', 'w-[400px]')
         emailto1.innerHTML=` 
-             <p class="ml-0.5"> ${objetGlobal.adresse.value}</p>
+             <p class="ml-1"> ${objetGlobal.adresse.value}</p>
              <a href="mailto:${objetGlobal.email.value}" class="InfoEmail text-blue-500">${objetGlobal.email.value}</a>
              <a href="${objetGlobal.telephone.value}" class="text-blue-500">${objetGlobal.telephone.value}</a>
              <a href="${objetGlobal.linkedin.value}<" class="text-blue-500" target="_blank">Linkedin</a>
@@ -643,7 +659,7 @@ if(boutonSubmit){
       let langues= document.querySelector(".langues")
       for (let i = 0; i < arrLangue.length; i++) {
         var comp = document.createElement('li')
-        comp.innerText=`${arrLangue[i].lnague} : ${arrLangue[i].niveau}`
+        comp.innerText=`${arrLangue[i].langue} : ${arrLangue[i].niveau}`
         langues.appendChild(comp)
       }
 
@@ -682,7 +698,7 @@ if(boutonSubmit){
       experiences.appendChild(comp)
     }
 
-    })
+}})
     
 }
 
@@ -933,18 +949,32 @@ let objetGlobal = {
 }
 
 
-function recuperationLangue(){
-    let input_langue = document.querySelectorAll(".langueInputs")
-    let select_langue = document.querySelectorAll(".Select-langue")
+function recuperationLangue() {
+    let input_langue = document.querySelectorAll(".langueInputs");
+    let select_langue = document.querySelectorAll(".Select-langue");
+    let allFilled = true; 
 
     for (let i = 0; i < input_langue.length; i++) {
-         objetLangue = {
-            lnague : input_langue[i].value,
-            niveau : select_langue[i].value
+        if (input_langue[i].value.trim() === "" || select_langue[i].value === "") {
+            allFilled = false; 
+            input_langue[i].style.borderColor = "red";
+            select_langue[i].style.borderColor = "red";
+        } else {
+            
+            input_langue[i].style.borderColor = "";
+            select_langue[i].style.borderColor = "";
+
+   
+            let objetLangue = {
+                langue: input_langue[i].value,
+                niveau: select_langue[i].value
+            };
+            arrLangue.push(objetLangue);
         }
-        arrLangue.push(objetLangue)
     }
 
+
+    return allFilled;
 }
 
 function recuperationDiplome(){
@@ -952,16 +982,41 @@ function recuperationDiplome(){
     let inputUniversite = document.querySelectorAll(".inputUniversite")
     let inputdateDebut = document.querySelectorAll(".inputdateDebut")
     let inputdateFin = document.querySelectorAll(".inputdateFin")
+    let allFilled = true; 
 
     for (let i = 0; i < inputDiplome.length; i++) {
-         objetDiplome = {
-            diplome : inputDiplome[i].value,
-            universite : inputUniversite[i].value,
-            dateDebut : inputdateDebut[i].value,
-            dateFin : inputdateFin[i].value
+        if (inputDiplome[i].value.trim() === "" || inputUniversite[i].value === "" || inputdateDebut[i].value.trim() === "" || inputdateFin[i].value === "") {
+            allFilled = false; 
+            inputDiplome[i].style.borderColor= "red"
+            inputUniversite[i].style.borderColor= "red"
+            inputdateDebut[i].style.borderColor= "red"
+            inputdateFin[i].style.borderColor= "red"
         }
-        arrDiplome.push(objetDiplome)
+        else{
+            inputDiplome[i].style.borderColor= ""
+            inputUniversite[i].style.borderColor= ""
+            inputdateDebut[i].style.borderColor= ""
+            inputdateFin[i].style.borderColor= ""
+
+            let dateDebut = new Date(inputdateDebut[i].value);
+            let dateFin = new Date(inputdateFin[i].value);
+
+            if (dateFin < dateDebut) {
+                allFilled = false;
+                inputdateDebut[i].style.borderColor = "red";
+                inputdateFin[i].style.borderColor = "red";
+            } else {
+                let objetDiplome = {
+                    diplome: inputDiplome[i].value,
+                    universite: inputUniversite[i].value,
+                    dateDebut: inputdateDebut[i].value,
+                    dateFin: inputdateFin[i].value
+                };
+            arrDiplome.push(objetDiplome)
+        }}
+        
     }
+    return allFilled;
 
 }
 
@@ -970,32 +1025,69 @@ function recuperationExperience(){
     let inputEntreprise = document.querySelectorAll(".inputEntreprise")
     let inputdateDebutExp = document.querySelectorAll(".inputdateDebutExp")
     let inputdateFinExp = document.querySelectorAll(".inputdateFinExp")
+    let allFilled = true; 
 
     for (let i = 0; i < inputdateFinExp.length; i++) {
-         objetExperience = {
-            experience : inputExperience[i].value,
-            entreprise : inputEntreprise[i].value,
-            dateDebutExp : inputdateDebutExp[i].value,
-            dateFinExp : inputdateFinExp[i].value
+        if (inputExperience[i].value.trim() === "" || inputEntreprise[i].value === "" || inputdateDebutExp[i].value.trim() === "" || inputdateFinExp[i].value === "") {
+            allFilled = false; 
+            inputExperience[i].style.borderColor= "red"
+            inputEntreprise[i].style.borderColor= "red"
+            inputdateDebutExp[i].style.borderColor= "red"
+            inputdateFinExp[i].style.borderColor= "red"
         }
-        arrExperience.push(objetExperience)
-    }
+        else{
+            inputExperience[i].style.borderColor= ""
+            inputEntreprise[i].style.borderColor= ""
+            inputdateDebutExp[i].style.borderColor= ""
+            inputdateFinExp[i].style.borderColor= ""
 
+            let dateDebut = new Date(inputdateDebutExp[i].value);
+            let dateFin = new Date(inputdateFinExp[i].value);
+
+            if (dateFin < dateDebut) {
+                allFilled = false;
+                inputdateDebutExp[i].style.borderColor = "red";
+                inputdateFinExp[i].style.borderColor = "red";
+            } 
+            else {
+                objetExperience = {
+                    experience : inputExperience[i].value,
+                    entreprise : inputEntreprise[i].value,
+                    dateDebutExp : inputdateDebutExp[i].value,
+                    dateFinExp : inputdateFinExp[i].value
+                }
+                arrExperience.push(objetExperience)
+        }
+        }   
+    }
+    return allFilled;
 }
 
 function recuperationCertificat(){
     let inputCertificat = document.querySelectorAll(".inputCertificat")
     let inputCertificatlieu = document.querySelectorAll(".inputCertificatlieu")
+    let allFilled = true; 
 
     for (let i = 0; i < inputCertificatlieu.length; i++) {
-         objetCertificat = {
-            certificat : inputCertificat[i].value,
-            lieu : inputCertificatlieu[i].value
-            
-        }
-        arrCertificat.push(objetCertificat)
-    }
+        if(inputCertificat[i].value.trim() === "" || inputCertificatlieu[i].value.trim() === ""){
+            allFilled = false; 
+            inputCertificat[i].style.borderColor = "red"
+            inputCertificatlieu[i].style.borderColor = "red"
+        }else{
+            inputCertificat[i].style.borderColor = ""
+            inputCertificatlieu[i].style.borderColor = ""
 
+            objetCertificat = {
+                certificat : inputCertificat[i].value,
+                lieu : inputCertificatlieu[i].value
+                
+            }
+            arrCertificat.push(objetCertificat)
+
+        }
+         
+    }
+    return allFilled;
 }
 
 const content = document.querySelector(".cv-classic-div")
@@ -1010,7 +1102,7 @@ btndwlond.addEventListener('click', async function () {
         margin: 1,
         filename: filename,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 4 },
+        html2canvas: { scale: 8 },
         jsPDF: { unit: 'in', format: 'A4', orientation: 'portrait' }
     };
     try {
