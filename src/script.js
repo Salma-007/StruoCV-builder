@@ -44,10 +44,7 @@ let arrCertificat = []
 let arrExperience = []
 function x(){
     for (let i = 0; i < arrLangue.length; i++) {
-        console.log(arrLangue[0].niveau);
-        
-        
-        
+        console.log(arrLangue[0].niveau);  
     }
 }
 
@@ -347,9 +344,9 @@ function checkFormInputs() {
     let isFormValid = true;
 
 
-    document.getElementById("nomError").innerHTML = "";
-    document.getElementById("prenomError").innerHTML = "";
-    document.getElementById("emailError0").innerHTML = "";
+    // document.getElementById("nomError").innerHTML = "";
+    // document.getElementById("prenomError").innerHTML = "";
+    // document.getElementById("emailError0").innerHTML = "";
 
 
     if (!nom.value) {
@@ -413,7 +410,31 @@ email.addEventListener('input', checkFormInputs);
 linkedin.addEventListener('input', checkFormInputs);
 github.addEventListener('input', checkFormInputs);
 
+function checkFormInputs2() {
+    let isFormValid = true;
+    if (!profil.value) {
+        document.getElementById("profilError0").innerHTML = "Veuillez entrer un profil valide.";
+        isFormValid = false;
+    }
+    else if (!resume.value) {
+        document.getElementById("resumeError").innerHTML = "Veuillez entrer un profil valide.";
+        isFormValid = false;
+    }
+    if (isFormValid) {
+        boutonSuivant2.disabled = false;
+    } else {
+        boutonSuivant2.disabled = true;
+    }
+}
 
+profil.addEventListener('input', checkFormInputs2);
+resume.addEventListener('input', checkFormInputs2);
+
+// function checkFormInputs2() { 
+//     let isFormValid = true;
+//     for
+
+// }
 
 
 // onclick de chaque bouton
@@ -428,31 +449,62 @@ if (boutonSuivant1) {
          
         });
 }
+
 if (boutonSuivant2) {
     boutonSuivant2.addEventListener("click", nextSection3);
 }
-if (boutonSuivant3) {
-    boutonSuivant3.addEventListener("click",()=>{ 
-        let competenceIputs = document.querySelectorAll(".competence-input")
-        competenceIputs.forEach((e)=>{
-            arrCompetence.push(e)
-            console.log(e.value);
-    })
-        nextSection4();
 
+if (boutonSuivant3) {
+    boutonSuivant3.addEventListener("click", () => { 
+        let competenceInputs = document.querySelectorAll(".competence-input");
+        let allFilled = true;  
+
+        competenceInputs.forEach((input) => {
+            if (input.value.trim() === "") {
+                allFilled = false; 
+                input.style.borderColor = "red";  
+            } else {
+                input.style.borderColor = "";  
+                arrCompetence.push(input); 
+            }
+        });
+
+        if (allFilled) {
+            console.log("Tous les champs sont remplis", arrCompetence);
+            nextSection4();  
+        } else {
+            console.log("Certains champs sont vides.");
+
+        }
     });
 }
+
 if (boutonSuivant4) {
-    boutonSuivant4.addEventListener("click",()=>{
-        let competenceIputs1 = document.querySelectorAll(".competence-soft-input")
-        competenceIputs1.forEach((e)=>{
-            arrCompetenceSoft.push(e)
-            console.log(e.value);
-            
-    })
-        nextSection5();
+    boutonSuivant4.addEventListener("click", () => { 
+        let competenceInputs1 = document.querySelectorAll(".competence-soft-input");
+        let allFilled = true;  
+
+        competenceInputs1.forEach((input) => {
+            if (input.value.trim() === "") {
+                allFilled = false;  
+                input.style.borderColor = "red";  
+            } else {
+                input.style.borderColor = "";  
+                arrCompetenceSoft.push(input);  
+            }
+        });
+
+        if (allFilled) {
+            console.log("Tous les champs sont remplis", arrCompetenceSoft);
+            nextSection5();  
+        } else {
+            console.log("Certains champs sont vides.");
+
+        }
     });
 }
+
+
 if (boutonSuivant5) {
     boutonSuivant5.addEventListener("click", ()=>{
                 if( arrLangue.length == 0 ){
@@ -468,6 +520,7 @@ if (boutonSuivant5) {
 
     });
 }
+
 if (boutonSuivant6) {
     boutonSuivant6.addEventListener("click",()=>{
 
@@ -480,6 +533,7 @@ if (boutonSuivant6) {
 
     });
 }
+
 if (boutonSuivant7) {
     boutonSuivant7.addEventListener("click", ()=>{
         if(arrDiplome.length == 0){
@@ -495,6 +549,7 @@ if (boutonSuivant7) {
       nextSection8();  
     });
 }
+
 if (boutonSuivant8) {
     boutonSuivant8.addEventListener("click",()=>{
         if(arrCertificat.length == 0){
@@ -509,6 +564,7 @@ if (boutonSuivant8) {
        nextSection9(); 
     });
 }
+
 if(boutonSubmit){
     boutonSubmit.addEventListener("click",()=>{
         if(arrCertificat.length == 0){
@@ -651,6 +707,8 @@ boutonPlus.addEventListener('click', function() {
         divCompetence.appendChild(competence);
 
 });
+
+
 // fonction de supprimer div
 function deleteCompetence(button){
     let competenceDiv = button.closest('.form-element1');
