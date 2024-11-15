@@ -336,125 +336,118 @@ function nextSection9() {
               
 
 
-//---------boutton 1  suivant disabled-----
+//---------email regular expression----
 var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
-function checkFormInputs() {
-
-    let isFormValid = true;
-
-
-    // document.getElementById("nomError").innerHTML = "";
-    // document.getElementById("prenomError").innerHTML = "";
-    // document.getElementById("emailError0").innerHTML = "";
-
-
-    if (!nom.value) {
-        document.getElementById("nomError").innerHTML = "Veuillez entrer un nom valide.";
-        isFormValid = false;
-    }
-
-    if (!prenom.value) {
-        document.getElementById("prenomError").innerHTML = "Veuillez entrer un prénom valide.";
-        isFormValid = false;
-    }
-
-    if (!photo.value) {
-        document.getElementById("photoError").innerHTML = "Veuillez télécharger une photo.";
-        isFormValid = false;
-    }
-
-    if (!adresse.value) {
-        document.getElementById("adresseError").innerHTML = "Veuillez entrer une adresse.";
-        isFormValid = false;
-    }
-
-    if (!telephone.value) {
-        document.getElementById("telephoneError").innerHTML = "Veuillez entrer un numéro de téléphone.";
-        isFormValid = false;
-    }
-
-    if (!linkedin.value) {
-        document.getElementById("linkedinError").innerHTML = "Veuillez entrer un profil LinkedIn.";
-        isFormValid = false;
-    }
-
-    if (!github.value) {
-        document.getElementById("githubError").innerHTML = "Veuillez entrer un profil GitHub.";
-        isFormValid = false;
-    }
-
-
-    if (!email.value) {
-        document.getElementById("emailError0").innerHTML = "Veuillez entrer un email.";
-        isFormValid = false;
-    } else if (!emailRegex.test(email.value)) {
-        document.getElementById("emailError0").innerHTML = "Veuillez entrer un email valide.";
-        isFormValid = false;
-    }
-
-
-    if (isFormValid) {
-        boutonSuivant1.disabled = false;
-    } else {
-        boutonSuivant1.disabled = true;
-    }
-}
-
-nom.addEventListener('input', checkFormInputs);
-prenom.addEventListener('input', checkFormInputs);
-photo.addEventListener('input', checkFormInputs);
-adresse.addEventListener('input', checkFormInputs);
-telephone.addEventListener('input', checkFormInputs);
-email.addEventListener('input', checkFormInputs);
-linkedin.addEventListener('input', checkFormInputs);
-github.addEventListener('input', checkFormInputs);
-
-function checkFormInputs2() {
-    let isFormValid = true;
-    if (!profil.value) {
-        document.getElementById("profilError0").innerHTML = "Veuillez entrer un profil valide.";
-        isFormValid = false;
-    }
-    else if (!resume.value) {
-        document.getElementById("resumeError").innerHTML = "Veuillez entrer un profil valide.";
-        isFormValid = false;
-    } else if (resume.value.length > 60) {
-        document.getElementById("resumeError").innerHTML = "Le résumé ne doit pas dépasser 30 caractères.";
-        isFormValid = false;
-    }
-    if (isFormValid) {
-        boutonSuivant2.disabled = false;
-    } else {
-        boutonSuivant2.disabled = true;
-    }
-}
-
-profil.addEventListener('input', checkFormInputs2);
-resume.addEventListener('input', checkFormInputs2);
-
-// function checkFormInputs2() { 
-//     let isFormValid = true;
-//     for
-
-// }
 
 
 // onclick de chaque bouton
 if (boutonSuivant1) {
-
+    
    
     boutonSuivant1.addEventListener("click",()=>{
-            
-        
+        let isFormValid = true;
+        if (!nom.value) {
+            document.getElementById("nomError").innerHTML = "Veuillez entrer un nom valide.";
+            isFormValid = false;
+        }
+        else{
+            document.getElementById("nomError").innerHTML = "";
+        }
+        if (!prenom.value) {
+            document.getElementById("prenomError").innerHTML = "Veuillez entrer un prénom valide.";
+            isFormValid = false;
+        }
+        else{
+            document.getElementById("prenomError").innerHTML = "";
+        }
+        if (!photo.value) {
+            document.getElementById("photoError").innerHTML = "Veuillez télécharger une photo.";
+            isFormValid = false;
+        }
+        else{
+            document.getElementById("photoError").innerHTML = "";
+        }
+        if (!adresse.value) {
+            document.getElementById("adresseError").innerHTML = "Veuillez entrer une adresse.";
+            isFormValid = false;
+        }
+        else{
+            document.getElementById("adresseError").innerHTML = "";
+        }
+        if (!telephone.value) {
+            document.getElementById("telephoneError").innerHTML = "Veuillez entrer un numéro de téléphone.";
+            isFormValid = false;
+        }
+        else{
+            document.getElementById("telephoneError").innerHTML = "";
+        }
+        if (!linkedin.value) {
+            document.getElementById("linkedinError").innerHTML = "Veuillez entrer un profil LinkedIn.";
+            isFormValid = false;
+        }
+        else{
+            document.getElementById("linkedinError").innerHTML = "";
+        }
+        if (!github.value) {
+            document.getElementById("githubError").innerHTML = "Veuillez entrer un profil GitHub.";
+            isFormValid = false;
+        }
+        else{
+            document.getElementById("githubError").innerHTML = "";
+        }
+        if (!email.value) {
+            document.getElementById("emailError0").innerHTML = "Veuillez entrer un email.";
+            isFormValid = false;
+        } else if (!emailRegex.test(email.value)) {
+            document.getElementById("emailError0").innerHTML = "Veuillez entrer un email valide.";
+            isFormValid = false;
+        }
+        else{
+            document.getElementById("emailError0").innerHTML = "";
+        }
 
-        nextSection2();
+        if (isFormValid) {
+            nextSection2();
+    } else {
+        alert("veillez entrez tout les champs correctement!")
+    }
+
+        
          
         });
 }
 
+
+const resumeMaxLengthRegex = /^.{1,60}$/;
 if (boutonSuivant2) {
-    boutonSuivant2.addEventListener("click", nextSection3);
+    boutonSuivant2.addEventListener("click",()=>{
+        let isFormValid = true;
+    if (!profil.value) {
+        document.getElementById("profilError0").innerHTML = "Veuillez entrer un profil valide.";
+        isFormValid = false;
+    }
+    else {
+        document.getElementById("profilError0").innerHTML = ""; 
+    }
+
+    if (!resume.value) {
+        document.getElementById("resumeError").innerHTML = "Veuillez entrer un profil valide.";
+        isFormValid = false;
+    } else if (!resumeMaxLengthRegex.test(resume.value.trim())) {
+        document.getElementById("resumeError").innerHTML = "Le résumé ne doit pas dépasser 60 caractères.";
+        isFormValid = false;
+    } 
+    else {
+        document.getElementById("resumeError").innerHTML = ""; 
+    }
+    if (isFormValid) {
+        nextSection3();
+    } else {
+        alert("veillez entrez tout les champs correctement!")
+    }
+        
+    } );
 }
 
 if (boutonSuivant3) {
@@ -1102,7 +1095,7 @@ btndwlond.addEventListener('click', async function () {
         margin: 1,
         filename: filename,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 8 },
+        html2canvas: { scale: 4 },
         jsPDF: { unit: 'in', format: 'A4', orientation: 'portrait' }
     };
     try {
