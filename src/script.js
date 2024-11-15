@@ -552,7 +552,8 @@ if (boutonSuivant7) {
             nextSection8();  
         }
         else{
-            alert("veuillez entrez tout les champs correctement!")
+          console.log("erreur!");
+          
         }
         
 
@@ -618,9 +619,9 @@ if(boutonSubmit){
         emailto1.classList.add( 'justify-center', 'mt-4','space-x-6', 'w-[400px]')
         emailto1.innerHTML=` 
              <p class="ml-1"> ${objetGlobal.adresse.value}</p>
-             <a href="mailto:${objetGlobal.email.value}" class="InfoEmail text-blue-500">${objetGlobal.email.value}</a>
+             <a href="mailto:${objetGlobal.email.value}" class="InfoEmail text-blue-500" style="margin-left:0;">${objetGlobal.email.value}</a>
              <a href="${objetGlobal.telephone.value}" class="text-blue-500">${objetGlobal.telephone.value}</a>
-             <a href="${objetGlobal.linkedin.value}<" class="text-blue-500" target="_blank">Linkedin</a>
+             <a href="${objetGlobal.linkedin.value}"  class="text-blue-500" target="_blank">Linkedin</a>
              <a href="${objetGlobal.github.value}<" class="text-blue-500" target="_blank">Github</a>
         `
         persoContact.appendChild(emailto1)
@@ -1010,6 +1011,7 @@ function recuperationDiplome(){
                 allFilled = false;
                 inputdateDebut[i].style.borderColor = "red";
                 inputdateFin[i].style.borderColor = "red";
+                alert("Entrez des années logique svp!")
             } else {
                 let objetDiplome = {
                     diplome: inputDiplome[i].value,
