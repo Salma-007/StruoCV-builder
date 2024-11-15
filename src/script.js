@@ -410,11 +410,8 @@ if (boutonSuivant1) {
         if (isFormValid) {
             nextSection2();
     } else {
-        alert("veillez entrez tout les champs correctement!")
+        alert("veuillez entrez tout les champs correctement!")
     }
-
-        
-         
         });
 }
 
@@ -444,7 +441,7 @@ if (boutonSuivant2) {
     if (isFormValid) {
         nextSection3();
     } else {
-        alert("veillez entrez tout les champs correctement!")
+        alert("veuillez entrez tout les champs correctement!")
     }
         
     } );
@@ -469,7 +466,7 @@ if (boutonSuivant3) {
             console.log("Tous les champs sont remplis", arrCompetence);
             nextSection4();  
         } else {
-            console.log("Certains champs sont vides.");
+            alert("veuillez entrez tout les champs correctement!")
 
         }
     });
@@ -494,7 +491,7 @@ if (boutonSuivant4) {
             console.log("Tous les champs sont remplis", arrCompetenceSoft);
             nextSection5();  
         } else {
-            console.log("Certains champs sont vides.");
+            alert("veuillez entrez tout les champs correctement!")
 
         }
     });
@@ -505,6 +502,9 @@ if (boutonSuivant5) {
     boutonSuivant5.addEventListener("click", ()=>{
                 if( recuperationLangue()){
                     nextSection6();
+                }
+                else{
+                    alert("veuillez entrez tout les champs correctement!")
                 }
                 
        
@@ -538,6 +538,9 @@ if (boutonSuivant6) {
         if(allFilled){
             nextSection7(); 
         }
+        else{
+            alert("veuillez entrez tout les champs correctement!")
+        }
         
 
     });
@@ -547,6 +550,9 @@ if (boutonSuivant7) {
     boutonSuivant7.addEventListener("click", ()=>{
         if(recuperationDiplome()){
             nextSection8();  
+        }
+        else{
+            alert("veuillez entrez tout les champs correctement!")
         }
         
 
@@ -563,6 +569,9 @@ if (boutonSuivant8) {
     boutonSuivant8.addEventListener("click",()=>{
         if(recuperationExperience() ){
             nextSection9(); 
+        }
+        else{
+            alert("veuillez entrez tout les champs correctement!")
         }
         
         for (let i = 0; i < arrExperience.length; i++) {
@@ -691,6 +700,9 @@ if(boutonSubmit){
       experiences.appendChild(comp)
     }
 
+}
+else{
+    alert("veuillez entrez tout les champs correctement!")
 }})
     
 }
