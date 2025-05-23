@@ -1,4 +1,4 @@
-# bief-5-StruoCV
+# StruoCV-builder
 
 ## Vue d'ensemble
 
